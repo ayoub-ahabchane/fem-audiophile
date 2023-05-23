@@ -24,14 +24,14 @@ const preview: Preview = {
     },
   },
   decorators: [
-    withThemeByDataAttribute({
-      themes: {
-        light: "light",
-        dark: "dark",
-      },
-      defaultTheme: "light",
-      attributeName: "data-mode",
-    }),
+    // withThemeByDataAttribute({
+    //   themes: {
+    //     light: "light",
+    //     dark: "dark",
+    //   },
+    //   defaultTheme: "light",
+    //   attributeName: "data-mode",
+    // }),
     (Story) => {
       return (
         <div

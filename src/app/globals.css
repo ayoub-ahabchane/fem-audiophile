@@ -2,10 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply text-body text-adp-copy-black;
+  }
+}
+
 .sbdocs.sbdocs-content * {
   --font-manrope: "Manrope";
 
   @apply font-sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block 
+      border-2 
+      border-adp-tangerine-400 
+      bg-adp-tangerine-400 
+      px-7 
+      py-4 
+      text-controls 
+      uppercase 
+      text-adp-copy-white 
+      transition
+      focus-within:border-adp-tangerine-300 
+      focus-within:bg-adp-tangerine-300 
+      focus-within:outline 
+      focus-within:outline-2 
+      focus-within:outline-adp-copy-black 
+      hover:border-adp-tangerine-300
+      hover:bg-adp-tangerine-300;
+  }
+
+  .btn-secondary {
+    @apply inline-block 
+      border-2 
+      border-adp-copy-black 
+      px-7 
+      py-4 
+      text-controls 
+      uppercase 
+      text-adp-copy-black
+      transition  
+      focus-within:bg-adp-copy-black
+      focus-within:text-adp-copy-white
+      focus-within:outline
+      focus-within:outline-2
+      focus-within:outline-adp-tangerine-400 
+      hover:bg-adp-copy-black 
+      hover:text-adp-copy-white;
+  }
+
+  .btn-muted {
+    @apply flex 
+      items-center 
+      gap-2 
+      px-7 
+      py-4
+      text-controls
+      uppercase
+      text-adp-copy-black
+      text-opacity-50
+      transition
+      focus-within:text-adp-tangerine-400
+      focus-within:text-opacity-100
+      hover:text-adp-tangerine-400
+      hover:text-opacity-100;
+  }
 }

@@ -9,13 +9,21 @@ module.exports = {
     "./src/storybook/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class", '[data-mode="dark"]'],
+  // darkMode: ["class", '[data-mode="dark"]'],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-manrope)", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        controls: [
+          "0.8125rem",
+          {
+            lineHeight: "1.36em",
+            letterSpacing: "0.0769em",
+            fontWeight: "700",
+          },
+        ],
         subtitle: [
           "0.8125rem",
           {
