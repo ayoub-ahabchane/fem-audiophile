@@ -32,14 +32,16 @@ const preview: Preview = {
       defaultTheme: "light",
       attributeName: "data-mode",
     }),
-    (Story) => (
-      <main
-        className={`${manrope.variable}`}
-        style={{ fontFamily: "var(--font-manrope)" }}
-      >
-        <Story />
-      </main>
-    ),
+    (Story) => {
+      return (
+        <div
+          className={`${manrope.variable}`}
+          style={{ fontFamily: "var(--font-manrope)" }}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
 };
 

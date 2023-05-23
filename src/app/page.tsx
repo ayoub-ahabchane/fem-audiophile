@@ -1,9 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <h1 className="text-3xl font-bold uppercase">
-        Morbi interdum mollis sapien
-      </h1>
+      <h1>Morbi interdum mollis sapien</h1>
     </main>
   );
 }

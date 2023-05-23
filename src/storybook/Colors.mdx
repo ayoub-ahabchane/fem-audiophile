@@ -1,37 +1,34 @@
-{/* Colors.mdx */}
-
 import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
 
-<Meta title="design system/Colors" />
+<Meta title="Design System/Colors" />
+
+# Color Palette
 
 <ColorPalette>
   <ColorItem
-    title="theme.color.greyscale"
-    subtitle="Some of the greys"
+    title="Tangerine"
+    subtitle="Primary accent"
     colors={{
-      White: "#FFFFFF",
-      Alabaster: "#F8F8F8",
-      Concrete: "#F3F3F3",
+      "adp-tangerine-400": "#D87D4A",
+      "adp-tangerine-300": "#fbaf85",
     }}
   />
   <ColorItem
-    title="theme.color.primary"
-    subtitle="Coral"
-    colors={{ WildWatermelon: "#FF4785" }}
-  />
-  <ColorItem
-    title="theme.color.secondary"
-    subtitle="Ocean"
-    colors={{ DodgerBlue: "#1EA7FD" }}
-  />
-  <ColorItem
-    title="theme.color.positive"
-    subtitle="Green"
+    title="Slate"
+    subtitle="Background colors"
     colors={{
-      Apple: "rgba(102,191,60,1)",
-      Apple80: "rgba(102,191,60,.8)",
-      Apple60: "rgba(102,191,60,.6)",
-      Apple30: "rgba(102,191,60,.3)",
+      "adp-slate-800": "#101010",
+      "adp-slate-300": "#F1F1F1",
+      "adp-slate-200": "#FAFAFA",
     }}
   />
+  <ColorItem
+    title="Copy"
+    subtitle="Text colors"
+    colors={{
+      "adp-copy-black": "#000000",
+      "adp-copy-white": "#FFFFFF",
+    }}
+  />
+
 </ColorPalette>
