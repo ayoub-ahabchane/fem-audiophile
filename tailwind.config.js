@@ -16,6 +16,22 @@ module.exports = {
         sans: ["var(--font-manrope)", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        input: [
+          "0.875rem",
+          {
+            fontWeight: "700",
+            lineHeight: "1em",
+            letterSpacing: "-0.0178em",
+          },
+        ],
+        label: [
+          "0.75rem",
+          {
+            lineHeight: "1em",
+            letterSpacing: "-0.0175em",
+            fontWeight: "700",
+          },
+        ],
         controls: [
           "0.8125rem",
           {
@@ -102,6 +118,7 @@ module.exports = {
         "adp-tangerine-300": "#fbaf85",
         "adp-slate-800": "#101010",
         "adp-slate-300": "#F1F1F1",
+        "adp-slate-400": "#CFCFCF",
         "adp-slate-200": "#FAFAFA",
         "adp-copy-black": "#000000",
         "adp-copy-white": "#FFFFFF",

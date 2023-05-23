@@ -72,4 +72,23 @@
       hover:text-adp-tangerine-400
       hover:text-opacity-100;
   }
+
+  .input-text {
+    @apply rounded-md 
+    border 
+    border-adp-slate-400 
+    px-[1.714em] 
+    py-[1.2em] text-input
+    text-adp-copy-black    
+    caret-adp-tangerine-400 
+    outline-none 
+    transition 
+    placeholder:text-adp-copy-black 
+    placeholder:text-opacity-40 
+    focus-within:border-adp-tangerine-400;
+  }
+
+  .input-label {
+    @apply flex flex-col gap-2.5 text-label capitalize;
+  }
 }
