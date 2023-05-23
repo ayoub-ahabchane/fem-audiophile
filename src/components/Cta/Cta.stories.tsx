@@ -12,7 +12,10 @@ type Story = StoryObj<typeof Cta>;
 
 export const Primary: Story = {
   args: {
-    href: "/",
+    anchorProps: {
+      href: "/",
+      "aria-label": "Learn more about product X",
+    },
     label: "See product",
     variation: "primary",
   },

@@ -1,23 +1,28 @@
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-type PropTypes = {
+interface PropTypes {
   /** The CTA's style variation */
   variation: "primary" | "secondary" | "muted";
   /** The CTA's text label */
   label: string;
-  /** The route to which the CTA leads */
-  href: string;
-};
+  /** Native anchor link attributes */
+  anchorProps: {
+    /** The route to which the CTA leads */
+    href: string;
+    /** Text to be announced to screen reader users */
+    "aria-label": string;
+  };
+}
 
 /**
  * A call to action UI component
  * @param variation The CTA's style variation
  * @param label The CTA's text label
- * @param href The route to which the CTA leads
+ * @param anchorProps Native anchor link attributes
  * @returns JSX
  */
-const Cta = ({ variation, label, href }: PropTypes) => {
+const Cta = ({ variation, label, anchorProps }: PropTypes) => {
   const linkStyle =
     variation === "primary"
       ? "btn-primary"
@@ -25,7 +30,7 @@ const Cta = ({ variation, label, href }: PropTypes) => {
       ? "btn-secondary"
       : "btn-muted";
   return (
-    <Link className={`${linkStyle}`} href={href}>
+    <Link className={`${linkStyle}`} {...anchorProps}>
       {label}
       {linkStyle == "btn-muted" && (
         <ChevronRightIcon className="w-4 text-adp-tangerine-400" />
