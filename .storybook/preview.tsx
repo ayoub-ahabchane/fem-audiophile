@@ -1,4 +1,3 @@
-import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import type { Preview } from "@storybook/react";
 import { Manrope } from "next/font/google";
 import React from "react";
@@ -22,6 +21,35 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    viewport: {
+      viewports: {
+        mobile: {
+          name: "Mobile",
+          styles: {
+            width: "375px",
+            height: "823px",
+          },
+          type: "mobile",
+        },
+        tablet: {
+          name: "Tablet",
+          styles: {
+            width: "768px",
+            height: "1024px",
+          },
+          type: "tablet",
+        },
+        desktop: {
+          name: "Desktop",
+          styles: {
+            width: "1440px",
+            height: "1024px",
+          },
+          type: "desktop",
+        },
+      },
+      defaultViewport: "responsive",
+    },
   },
   decorators: [
     // withThemeByDataAttribute({
@@ -32,6 +60,9 @@ const preview: Preview = {
     //   defaultTheme: "light",
     //   attributeName: "data-mode",
     // }),
+
+    // This is a global decorator that applies the Manrope font to all stories
+
     (Story) => {
       return (
         <div

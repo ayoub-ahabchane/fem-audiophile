@@ -40,6 +40,14 @@ module.exports = {
             fontWeight: "700",
           },
         ],
+        navLink: [
+          "0.8125rem",
+          {
+            lineHeight: "1.36em",
+            letterSpacing: "0.1538em",
+            fontWeight: "700",
+          },
+        ],
         subtitle: [
           "0.8125rem",
           {
@@ -116,10 +124,11 @@ module.exports = {
       colors: {
         "adp-tangerine-400": "#D87D4A",
         "adp-tangerine-300": "#fbaf85",
-        "adp-slate-800": "#101010",
+        "adp-slate-200": "#FAFAFA",
         "adp-slate-300": "#F1F1F1",
         "adp-slate-400": "#CFCFCF",
-        "adp-slate-200": "#FAFAFA",
+        "adp-slate-500": "#979797",
+        "adp-slate-800": "#101010",
         "adp-copy-black": "#000000",
         "adp-copy-white": "#FFFFFF",
       },

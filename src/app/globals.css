@@ -91,4 +91,11 @@
   .input-label {
     @apply flex flex-col gap-2.5 text-label capitalize;
   }
+
+  .navlink--large {
+    @apply text-navLink uppercase transition hover:text-adp-tangerine-400;
+  }
+  .navlink--large.active {
+    @apply text-adp-tangerine-400;
+  }
 }
