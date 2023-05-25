@@ -4,6 +4,9 @@ import Cta from "./Cta";
 const meta: Meta<typeof Cta> = {
   title: "Controls/CTA",
   component: Cta,
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export default meta;
@@ -18,6 +21,13 @@ export const Primary: Story = {
     },
     label: "See product",
     variation: "primary",
+  },
+};
+
+export const Dark: Story = {
+  args: {
+    ...Primary.args,
+    variation: "dark",
   },
 };
 

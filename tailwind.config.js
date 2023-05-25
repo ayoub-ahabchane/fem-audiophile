@@ -128,6 +128,7 @@ module.exports = {
         "adp-slate-300": "#F1F1F1",
         "adp-slate-400": "#CFCFCF",
         "adp-slate-500": "#979797",
+        "adp-slate-600": "#4C4C4C",
         "adp-slate-800": "#101010",
         "adp-copy-black": "#000000",
         "adp-copy-white": "#FFFFFF",

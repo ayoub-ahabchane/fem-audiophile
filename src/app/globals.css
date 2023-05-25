@@ -73,6 +73,23 @@
       hover:text-opacity-100;
   }
 
+  .btn-dark {
+    @apply inline-block 
+      border-2 
+      border-adp-copy-black 
+      bg-adp-copy-black
+      px-7
+      py-4 
+      text-controls 
+      uppercase 
+      text-adp-copy-white
+      transition  
+      focus-within:border-adp-slate-600
+      focus-within:bg-adp-slate-600
+      hover:border-adp-slate-600
+      hover:bg-adp-slate-600;
+  }
+
   .input-text {
     @apply rounded-md 
     border 

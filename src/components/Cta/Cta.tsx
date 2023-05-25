@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface PropTypes {
   /** The CTA's style variation */
-  variation: "primary" | "secondary" | "muted";
+  variation: "primary" | "secondary" | "muted" | "dark";
   /** The CTA's text label */
   label: string;
   /** Native anchor link attributes */
@@ -28,6 +28,8 @@ const Cta = ({ variation, label, anchorProps }: PropTypes) => {
       ? "btn-primary"
       : variation === "secondary"
       ? "btn-secondary"
+      : variation === "dark"
+      ? "btn-dark"
       : "btn-muted";
   return (
     <Link className={`${linkStyle}`} {...anchorProps}>
