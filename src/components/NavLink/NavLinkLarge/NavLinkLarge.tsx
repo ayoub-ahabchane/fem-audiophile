@@ -2,8 +2,9 @@ import Link from "next/link";
 
 export type TLink = {
   /**The link's text label */
-  label: string;
+  label?: string;
   href: string;
+  ariaLabel?: string;
 };
 
 type PropTypes = {

@@ -11,7 +11,7 @@ interface PropTypes {
     /** The route to which the CTA leads */
     href: string;
     /** Text to be announced to screen reader users */
-    "aria-label": string;
+    ariaLabel: string;
   };
 }
 

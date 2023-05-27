@@ -59,9 +59,7 @@
   .btn-muted {
     @apply flex 
       items-center 
-      gap-2 
-      px-7 
-      py-4
+      gap-1 
       text-controls
       uppercase
       text-adp-copy-black
