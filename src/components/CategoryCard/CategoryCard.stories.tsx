@@ -1,11 +1,20 @@
 import { Meta, StoryObj } from "@storybook/react";
+import headphonesImg from "../../storybook/assets/image-category-thumbnail-headphones.png";
 import { UICategoryCard } from "./CategoryCard";
-import headphonesImg from "./assets/image-category-thumbnail-headphones.png";
 
 const meta: Meta<typeof UICategoryCard> = {
   title: "Components/Product Category Card",
   component: UICategoryCard,
   parameters: { layout: "centered" },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="max-w-[21.875rem]">
+          <Story />
+        </div>
+      );
+    },
+  ],
 };
 
 export default meta;
@@ -19,13 +28,4 @@ export const Default: Story = {
     image: headphonesImg,
     link: { href: "/" },
   },
-  decorators: [
-    (Story) => {
-      return (
-        <div className="min-w-[13.9375rem] max-w-[21.875rem]">
-          <Story />
-        </div>
-      );
-    },
-  ],
 };
