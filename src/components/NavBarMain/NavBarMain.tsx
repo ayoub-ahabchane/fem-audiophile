@@ -15,7 +15,7 @@ const NavBarMain = () => {
 
   return (
     <header className="fixed inset-x-0 border-b border-adp-slate-500 bg-adp-slate-800 px-6 py-8 lg:px-0">
-      <div className=" mx-auto grid grid-cols-[1fr_minmax(max-content,_100%)_1fr]  grid-rows-1 gap-x-6 text-adp-copy-white  md:gap-x-10 lg:max-w-[69.375rem] ">
+      <div className=" mx-auto grid grid-cols-[1fr_minmax(max-content,_100%)_1fr]  grid-rows-1 gap-x-6 text-adp-copy-white  md:gap-x-10 lg:max-w-[79.375rem] lg:px-20 ">
         <button className="lg:hidden" arial-label="Navigation menu">
           <Bars3Icon className="w-6" />
         </button>
