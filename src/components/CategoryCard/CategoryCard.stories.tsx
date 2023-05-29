@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import headphonesImg from "../../storybook/assets/image-category-thumbnail-headphones.png";
+import headphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
 import { UICategoryCard } from "./CategoryCard";
 
 const meta: Meta<typeof UICategoryCard> = {

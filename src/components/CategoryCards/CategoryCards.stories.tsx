@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import earphonesImg from "../../storybook/assets/image-category-thumbnail-earphones.png";
-import headphonesImg from "../../storybook/assets/image-category-thumbnail-headphones.png";
-import speakersImg from "../../storybook/assets/image-category-thumbnail-speakers.png";
+import earphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-earphones.png";
+import headphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
+import speakersImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-speakers.png";
 import { PropTypes as TCategoryCard } from "../CategoryCard/CategoryCard";
 import CategoryCards from "./CategoryCards";
 

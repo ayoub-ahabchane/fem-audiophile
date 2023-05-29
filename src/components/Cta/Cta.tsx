@@ -1,7 +1,7 @@
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-interface PropTypes {
+export type PropTypes = {
   /** The CTA's style variation */
   variation: "primary" | "secondary" | "muted" | "dark";
   /** The CTA's text label */
@@ -13,7 +13,7 @@ interface PropTypes {
     /** Text to be announced to screen reader users */
     ariaLabel: string;
   };
-}
+};
 
 /**
  * A call to action UI component
