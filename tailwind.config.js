@@ -103,7 +103,14 @@ module.exports = {
             fontWeight: "700",
           },
         ],
-
+        "h2-mobile": [
+          "2.25rem",
+          {
+            fontWeight: "700",
+            lineHeight: "1.1em",
+            tracking: "0.03em",
+          },
+        ],
         h2: [
           "2.5rem",
           {
@@ -132,6 +139,9 @@ module.exports = {
         "adp-slate-800": "#101010",
         "adp-copy-black": "#000000",
         "adp-copy-white": "#FFFFFF",
+      },
+      backgroundImage: {
+        loops: "url('/patterns/loops.svg')",
       },
     },
   },
