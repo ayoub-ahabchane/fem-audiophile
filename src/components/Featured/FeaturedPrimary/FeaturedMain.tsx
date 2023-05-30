@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import Cta, { PropTypes as TCta } from "../Cta/Cta";
+import Cta, { PropTypes as TCta } from "../../Cta/Cta";
 
 type PropTypes = {
   productImg: StaticImageData;

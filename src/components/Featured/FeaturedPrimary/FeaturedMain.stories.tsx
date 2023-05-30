@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import speakersImg from "../../storybook/assets/product_images/zx9_speakers/feature/primary/image-speaker-zx9.png";
+import speakersImg from "../../../storybook/assets/product_images/zx9_speakers/feature/primary/image-speaker-zx9.png";
 import FeaturedMain from "./FeaturedMain";
 
 const meta: Meta<typeof FeaturedMain> = {
-  title: "Components/FeaturedProduct/Main",
+  title: "Components/Featured Products/Main",
   component: FeaturedMain,
   parameters: {
     layout: "centered",
