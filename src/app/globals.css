@@ -114,3 +114,7 @@
     @apply text-adp-tangerine-400;
   }
 }
+
+h2 > span {
+  @apply text-adp-tangerine-400;
+}

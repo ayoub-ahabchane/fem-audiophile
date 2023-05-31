@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import Cta, { PropTypes as TCta } from "../../../components/Cta/Cta";
 
-type TImage = {
+export type TImage = {
   src: string | StaticImageData;
   alt: string;
 };
