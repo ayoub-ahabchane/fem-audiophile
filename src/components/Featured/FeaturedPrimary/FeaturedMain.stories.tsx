@@ -5,12 +5,9 @@ import FeaturedMain from "./FeaturedMain";
 const meta: Meta<typeof FeaturedMain> = {
   title: "Components/Featured Products/Main",
   component: FeaturedMain,
-  parameters: {
-    layout: "centered",
-  },
   decorators: [
     (Story) => (
-      <div className="w-[20.4375rem] md:w-[43.0625rem] lg:w-[69.375rem]">
+      <div className="max-w-[1110px] lg:mx-auto">
         <Story />
       </div>
     ),

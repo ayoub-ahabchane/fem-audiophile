@@ -3,6 +3,6 @@ import { create } from "@storybook/theming/create";
 import logo from "./audiophileLogo.png";
 
 export default create({
-  base: "light",
+  base: "dark",
   brandImage: logo,
 });

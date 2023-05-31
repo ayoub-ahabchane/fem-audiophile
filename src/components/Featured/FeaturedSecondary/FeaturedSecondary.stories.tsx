@@ -2,14 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 import FeaturedSecondary from "./FeaturedSecondary";
 
 const meta: Meta<typeof FeaturedSecondary> = {
-  title: "Components/Featured Products/Secondary Feature",
+  title: "Components/Featured Products/Secondary",
   component: FeaturedSecondary,
-  parameters: {
-    layout: "centered",
-  },
   decorators: [
     (Story) => (
-      <div className="md: w-[327px] md:w-[689px] lg:w-[1110px]">
+      <div className="max-w-[1110px] lg:mx-auto">
         <Story />
       </div>
     ),
@@ -24,7 +21,7 @@ export const Default: Story = {
   args: {
     headline: "zx7 speaker",
     backgroundImage:
-      "http://localhost:6006/product_images/zx7_speakers/feature/secondary/wideshot.jpg",
+      "/product_images/zx7_speakers/feature/secondary/wideshot.jpg",
     cta: {
       variation: "secondary",
       label: "see product",
