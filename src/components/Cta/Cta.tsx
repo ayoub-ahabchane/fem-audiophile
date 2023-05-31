@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export type PropTypes = {
   /** The CTA's style variation */
-  variation: "primary" | "secondary" | "muted" | "dark";
+  variation?: "primary" | "secondary" | "muted" | "dark";
   /** The CTA's text label */
   label: string;
   /** Native anchor link attributes */
@@ -22,7 +22,7 @@ export type PropTypes = {
  * @param anchorProps Native anchor link attributes
  * @returns JSX
  */
-const Cta = ({ variation, label, anchorProps }: PropTypes) => {
+const Cta = ({ variation = "primary", label, anchorProps }: PropTypes) => {
   const linkStyle =
     variation === "primary"
       ? "btn-primary"
