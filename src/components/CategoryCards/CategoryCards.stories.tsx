@@ -6,7 +6,7 @@ import { PropTypes as TCategoryCard } from "../CategoryCard/CategoryCard";
 import CategoryCards from "./CategoryCards";
 
 const meta: Meta<typeof CategoryCards> = {
-  title: "Components/Product Category List",
+  title: "Components/Product Category/List",
   component: CategoryCards,
   parameters: {
     // layout: "centered",

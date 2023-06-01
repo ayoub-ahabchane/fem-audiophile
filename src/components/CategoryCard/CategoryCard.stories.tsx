@@ -3,7 +3,7 @@ import headphonesImg from "../../storybook/assets/category_thumbnails/image-cate
 import { UICategoryCard } from "./CategoryCard";
 
 const meta: Meta<typeof UICategoryCard> = {
-  title: "Components/Product Category Card",
+  title: "Components/Product Category/Card",
   component: UICategoryCard,
   parameters: { layout: "centered" },
   decorators: [
