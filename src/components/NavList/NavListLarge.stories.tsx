@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import NavListLarge from "./NavListLarge";
 
 const meta: Meta<typeof NavListLarge> = {
-  title: "Components/Navigation/Navigation Lists/Desktop Navigation",
+  title: "Components/Navigation/Navigation List",
   component: NavListLarge,
   parameters: { layout: "centered" },
 };
@@ -13,7 +13,7 @@ type Story = StoryObj<typeof NavListLarge>;
 
 export const Default: Story = {
   args: {
-    links: [
+    navLinks: [
       { label: "Home", href: "/" },
       { label: "headphones", href: "/headphones" },
       { label: "speakers", href: "/speakers" },
