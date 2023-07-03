@@ -36,7 +36,7 @@ const ProductCard = ({
   return (
     <article className="grid grid-flow-row grid-rows-[repeat(2,_auto)] items-center gap-y-8 md:gap-y-14 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-1 lg:gap-x-32">
       <div
-        className={`relative flex overflow-hidden rounded-lg lg:self-stretch ${imageOrderClasses}`}
+        className={`relative flex overflow-hidden rounded-lg lg:w-[33.75rem] lg:self-stretch ${imageOrderClasses}`}
       >
         <Image
           src={productImages.src.mobile}
