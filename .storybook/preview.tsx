@@ -65,12 +65,21 @@ const preview: Preview = {
 
     (Story) => {
       return (
-        <div
-          className={`${manrope.variable}`}
-          style={{ fontFamily: "var(--font-manrope)" }}
-        >
+        <>
+          <style>
+            {`
+            body {
+              font-family: ${manrope.style.fontFamily}
+            }
+            `}
+          </style>
+          {/* <div
+            className={`${manrope.variable}`}
+            style={{ fontFamily: "var(--font-manrope)" }}
+          > */}
           <Story />
-        </div>
+          {/* </div> */}
+        </>
       );
     },
   ],
