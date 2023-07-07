@@ -46,7 +46,10 @@ const Cart = ({ items, cartTotal, onCheckout }: PropTypes) => {
             leaveTo="opacity-0"
             as={Fragment}
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div
+              className="fixed inset-0 top-[5.996875rem] bg-black/30"
+              aria-hidden="true"
+            />
           </Transition.Child>
           <Transition.Child
             enter="transition"

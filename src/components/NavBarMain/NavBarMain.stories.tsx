@@ -1,5 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import thumbnail from "../../storybook/assets/cart/image-xx99-mark-two-headphones.jpg";
+import earphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-earphones.png";
+import headphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
+import speakersImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-speakers.png";
 import NavBarMain from "./NavBarMain";
 
 const meta: Meta<typeof NavBarMain> = {
@@ -63,5 +66,31 @@ export const Default: Story = {
         console.log("boop!");
       },
     },
+    categories: [
+      {
+        categoryName: "headphones",
+        ctaTitle: "shop",
+        image: headphonesImg,
+        link: { href: "/headphones" },
+      },
+      {
+        categoryName: "speakers",
+        ctaTitle: "shop",
+        image: speakersImg,
+        link: { href: "/speakers" },
+      },
+      {
+        categoryName: "earphones",
+        ctaTitle: "shop",
+        image: earphonesImg,
+        link: { href: "/earphones" },
+      },
+    ],
+    links: [
+      { label: "Home", href: "/" },
+      { label: "headphones", href: "/headphones" },
+      { label: "speakers", href: "/speakers" },
+      { label: "earphones", href: "/earphones" },
+    ],
   },
 };
