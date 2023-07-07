@@ -2,11 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 import HeadphonesImgDesktop from "../../storybook/assets/product_card/image-category-page-preview-desktop.jpg";
 import HeadphonesImgMobile from "../../storybook/assets/product_card/image-category-page-preview-mobile.jpg";
 import HeadphonesImgTablet from "../../storybook/assets/product_card/image-category-page-preview-tablet.jpg";
-import ProductCard from "./ProductCard";
+import PreviewCard from "./PreviewCard";
 
-const meta: Meta<typeof ProductCard> = {
+const meta: Meta<typeof PreviewCard> = {
   title: "Components/Product Card",
-  component: ProductCard,
+  component: PreviewCard,
   decorators: [
     (Story) => (
       <div className="mx-auto lg:max-w-[79.375rem] lg:px-20">
@@ -18,7 +18,7 @@ const meta: Meta<typeof ProductCard> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ProductCard>;
+type Story = StoryObj<typeof PreviewCard>;
 
 export const Default: Story = {
   args: {

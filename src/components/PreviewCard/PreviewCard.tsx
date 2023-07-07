@@ -22,7 +22,7 @@ interface PropTypes {
   };
 }
 
-const ProductCard = ({
+const PreviewCard = ({
   reversed,
   title,
   copy,
@@ -72,4 +72,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default PreviewCard;
