@@ -1,6 +1,6 @@
 import {
+  CategoryCard,
   PropTypes as TCategoryCard,
-  UICategoryCard,
 } from "../CategoryCard/CategoryCard";
 
 enum ListDirection {
@@ -19,7 +19,7 @@ const CategoryCards = ({ categories }: PropTypes) => {
     >
       {categories.map((cat) => (
         <li key={cat.categoryName}>
-          <UICategoryCard {...cat} />
+          <CategoryCard {...cat} />
         </li>
       ))}
     </ul>

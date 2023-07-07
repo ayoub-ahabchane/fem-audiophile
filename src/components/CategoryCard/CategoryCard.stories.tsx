@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import headphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
-import { UICategoryCard } from "./CategoryCard";
+import { CategoryCard } from "./CategoryCard";
 
-const meta: Meta<typeof UICategoryCard> = {
+const meta: Meta<typeof CategoryCard> = {
   title: "Components/Product Category/Card",
-  component: UICategoryCard,
+  component: CategoryCard,
   parameters: { layout: "centered" },
   decorators: [
     (Story) => {
@@ -19,7 +19,7 @@ const meta: Meta<typeof UICategoryCard> = {
 
 export default meta;
 
-type Story = StoryObj<typeof UICategoryCard>;
+type Story = StoryObj<typeof CategoryCard>;
 
 export const Default: Story = {
   args: {

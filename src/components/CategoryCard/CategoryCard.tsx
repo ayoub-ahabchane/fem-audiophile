@@ -8,19 +8,22 @@ export type PropTypes = {
   image: StaticImageData;
   ctaTitle: string;
   link: TLink;
+  onClick?: () => void;
 };
 
-export const UICategoryCard = ({
+export const CategoryCard = ({
   categoryName,
   image,
   ctaTitle,
   link: { href, ariaLabel },
+  onClick,
 }: PropTypes) => {
   return (
     <Link
       href={href}
       aria-label={ariaLabel}
       className="group isolate grid min-w-[13.9375rem] grid-cols-1 grid-rows-[1fr_2fr_repeat(2,_auto)]"
+      onClick={onClick}
     >
       <Image
         src={image}
@@ -31,7 +34,7 @@ export const UICategoryCard = ({
       />
       <div className="-z-1 col-span-1 col-start-1 row-span-3 row-start-2 w-full rounded-lg bg-adp-slate-300"></div>
       <div className="z-20 col-span-1 col-start-1 row-span-2 row-start-3 flex flex-col items-center gap-4 pb-[1.375rem] lg:pb-[1.875rem]">
-        <h3 className="text-body font-bold uppercase tracking-[0.0713em] lg:text-h6">
+        <h3 className="text-body font-bold uppercase tracking-[0.0713em] text-adp-copy-black lg:text-h6">
           {categoryName}
         </h3>
         <div className="btn-muted group-hover:text-adp-tangerine-400">
