@@ -22,19 +22,22 @@
       border-2 
       border-adp-tangerine-400 
       bg-adp-tangerine-400 
-      px-7 
+      px-7
       py-4 
       text-controls 
       uppercase 
       text-adp-copy-white 
-      transition
-      focus-within:border-adp-tangerine-300 
-      focus-within:bg-adp-tangerine-300 
-      focus-within:outline 
-      focus-within:outline-2 
-      focus-within:outline-adp-copy-black 
-      hover:border-adp-tangerine-300
-      hover:bg-adp-tangerine-300;
+      transition 
+      disabled:border-adp-slate-600
+      disabled:bg-adp-slate-600
+      disabled:opacity-50
+      [&:not(:disabled)]:focus-within:border-adp-tangerine-300 
+      [&:not(:disabled)]:focus-within:bg-adp-tangerine-300 
+      [&:not(:disabled)]:focus-within:outline 
+      [&:not(:disabled)]:focus-within:outline-2 
+      [&:not(:disabled)]:focus-within:outline-adp-copy-black
+      [&:not(:disabled)]:hover:border-adp-tangerine-300
+      [&:not(:disabled)]:hover:bg-adp-tangerine-300;
   }
 
   .btn-secondary {

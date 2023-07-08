@@ -5,7 +5,7 @@ import { TLink } from "../NavLink/NavLinkLarge/NavLinkLarge";
 
 export type PropTypes = {
   categoryName: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   ctaTitle: string;
   link: TLink;
   onClick?: () => void;
@@ -26,6 +26,7 @@ export const CategoryCard = ({
       onClick={onClick}
     >
       <Image
+        priority={true}
         src={image}
         width={200}
         height={200}

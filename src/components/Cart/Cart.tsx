@@ -1,21 +1,24 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import { PropTypes as TCartItem } from "./CartItem/CartItem";
+
+import { storeContext } from "@/lib/Providers/store-provider";
+import { useContext } from "react";
 import CartPanel from "./CartPanel/CartPanel";
 
 export interface PropTypes {
-  items: TCartItem[];
+  items: TCartItem[] | [];
   cartTotal: number;
-  onCheckout: () => void;
+  checkoutUrl: string | null;
 }
 
-const noAsync = false;
-
-const Cart = ({ items, cartTotal, onCheckout }: PropTypes) => {
+export const UICart = ({ items, cartTotal, checkoutUrl }: PropTypes) => {
   const noAsync = true;
   let [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const openModal = () => {
     setIsOpen(true);
@@ -25,6 +28,10 @@ const Cart = ({ items, cartTotal, onCheckout }: PropTypes) => {
   };
   const clearAll = () => {
     console.log("Cart cleared!");
+  };
+
+  const onCheckout = () => {
+    checkoutUrl && router.push(checkoutUrl);
   };
   return (
     <div>
@@ -82,6 +89,16 @@ const Cart = ({ items, cartTotal, onCheckout }: PropTypes) => {
       </Transition>
     </div>
   );
+};
+
+const Cart = () => {
+  const { cart } = useContext(storeContext);
+  const cartData: PropTypes = {
+    items: cart ? cart.items : [],
+    cartTotal: cart ? cart.grandTotal : 0,
+    checkoutUrl: cart ? cart.checkoutUrl : null,
+  };
+  return <UICart {...cartData} />;
 };
 
 export default Cart;

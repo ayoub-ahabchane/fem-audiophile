@@ -1,19 +1,18 @@
 import Link from "next/link";
 import Cart, { PropTypes as TCart } from "../Cart/Cart";
+import { PropTypes as TCategoryCard } from "../CategoryCard/CategoryCard";
 import Logo from "../Logo/Logo";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import { TLink } from "../NavLink/NavLinkLarge/NavLinkLarge";
 import NavListLarge from "../NavList/NavListLarge";
-import MobileMenu from "../MobileMenu/MobileMenu";
-import { PropTypes as TCategoryCard } from "../CategoryCard/CategoryCard";
 
 interface PropTypes {
-  cartData: TCart;
   categories: TCategoryCard[];
   links: TLink[];
 }
 
 /** The main navigation bar */
-const NavBarMain = ({ cartData, categories, links }: PropTypes) => {
+const NavBarMain = ({ categories, links }: PropTypes) => {
   return (
     <header className="z-60 fixed inset-x-0 border-b border-adp-slate-500 bg-adp-slate-800 px-6 py-8 lg:px-0">
       <div className="z-60 relative mx-auto grid  grid-cols-[1fr_minmax(max-content,_100%)_1fr] grid-rows-1 gap-x-6 text-adp-copy-white md:gap-x-10 lg:max-w-[79.375rem] lg:place-items-center lg:px-20  ">
@@ -28,7 +27,7 @@ const NavBarMain = ({ cartData, categories, links }: PropTypes) => {
         <div className="hidden lg:block">
           <NavListLarge navLinks={links} />
         </div>
-        <Cart {...cartData} />
+        <Cart />
       </div>
     </header>
   );

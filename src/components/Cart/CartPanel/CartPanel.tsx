@@ -4,7 +4,7 @@ import { useState } from "react";
 import CartItem, { PropTypes as TCartItem } from "../CartItem/CartItem";
 
 interface PropTypes {
-  items: TCartItem[];
+  items: TCartItem[] | [];
   cartTotal: number;
   onCheckout: () => void;
   closePanel: () => void;
@@ -24,7 +24,7 @@ const CartPanel = ({
     <div className="flex flex-col gap-8 rounded-lg bg-white px-7 py-8">
       <div className="flex items-baseline justify-between">
         <h4 className="text-h6 font-bold uppercase">
-          Cart ({cartItems.length})
+          Cart {cartItems.length > 0 ? `(${cartItems.length})` : null}
         </h4>
         <button
           className="underline opacity-50"
@@ -58,6 +58,7 @@ const CartPanel = ({
         </p>
       </div>
       <button
+        disabled={!cartItems.length}
         className="btn-primary"
         onClick={() => {
           onCheckout();
