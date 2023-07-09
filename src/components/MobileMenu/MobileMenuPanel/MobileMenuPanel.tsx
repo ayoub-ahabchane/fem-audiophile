@@ -1,4 +1,4 @@
-import CategoryCards from "../../CategoryCards/CategoryCards";
+import UICategoryCards from "../../CategoryCards/CategoryCards";
 
 import earphonesImg from "../../../storybook/assets/category_thumbnails/image-category-thumbnail-earphones.png";
 import headphonesImg from "../../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
@@ -26,7 +26,7 @@ const categories = [
 const MobileMenuPanel = () => {
   return (
     <div>
-      <CategoryCards categories={categories} />
+      <UICategoryCards categories={categories} />
     </div>
   );
 };

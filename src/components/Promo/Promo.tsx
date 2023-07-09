@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
+import promoImgDesktop from "../../../public/promo/image-best-gear_desktop.jpg";
+import promoImgMobile from "../../../public/promo/image-best-gear_mobile.jpg";
+import promoImgTablet from "../../../public/promo/image-best-gear_tablet.jpg";
 import { TImage } from "../Featured/FeaturedStacked/FeaturedStacked";
-
 type PropTypes = {
   headline: string | React.ReactElement;
   copy: string;
@@ -12,7 +14,7 @@ type PropTypes = {
   };
 };
 
-const Promo = ({ headline, copy, image }: PropTypes) => {
+export const UIPromo = ({ headline, copy, image }: PropTypes) => {
   return (
     <article className="grid grid-cols-1 grid-rows-[repeat(2,_auto)] gap-y-10 md:gap-y-16 lg:grid-cols-2 lg:grid-rows-1 lg:gap-x-32">
       <Image
@@ -39,6 +41,35 @@ const Promo = ({ headline, copy, image }: PropTypes) => {
       </div>
     </article>
   );
+};
+
+const Promo = () => {
+  const promoFeatures: PropTypes = {
+    headline: (
+      <>
+        Bringing you the
+        <br />
+        <span>best</span> audio gear
+      </>
+    ),
+    copy: "Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.",
+    image: {
+      mobile: {
+        src: promoImgMobile,
+        alt: "Man wearing XX99 Mark 2 headphones",
+      },
+      tablet: {
+        src: promoImgTablet,
+        alt: "Man wearing XX99 Mark 2 headphones",
+      },
+      desktop: {
+        src: promoImgDesktop,
+        alt: "Man wearing XX99 Mark 2 headphones",
+      },
+    },
+  };
+
+  return <UIPromo {...promoFeatures} />;
 };
 
 export default Promo;

@@ -29,12 +29,13 @@ export const getAllProducts = async () => {
   return results;
 };
 
-export const getProduct = async (slug: string) => {
+export const getProduct = async (slug: string, fields?: string[]) => {
   const response = await swellnode.get(`/products/`, {
     where: {
       active: true,
       slug,
     },
+    fields: fields,
   });
 
   return response.results[0];

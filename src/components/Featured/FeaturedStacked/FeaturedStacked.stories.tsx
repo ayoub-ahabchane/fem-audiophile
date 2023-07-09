@@ -1,12 +1,12 @@
-import { Meta, StoryObj, StrictArgs } from "@storybook/react";
-import FeaturedStacked from "./FeaturedStacked";
+import { Meta, StoryObj } from "@storybook/react";
+import earPhonesDesktop from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_desktop.jpg";
 import earPhonesMobile from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_mobile.jpg";
 import earPhonesTablet from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_tablet.jpg";
-import earPhonesDesktop from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_desktop.jpg";
+import UIFeaturedStacked from "./FeaturedStacked";
 
-const meta: Meta<typeof FeaturedStacked> = {
+const meta: Meta<typeof UIFeaturedStacked> = {
   title: "Components/Featured Products/Stacked",
-  component: FeaturedStacked,
+  component: UIFeaturedStacked,
   decorators: [
     (Story) => (
       <div className="max-w-[1110px] lg:mx-auto">
@@ -18,7 +18,7 @@ const meta: Meta<typeof FeaturedStacked> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FeaturedStacked>;
+type Story = StoryObj<typeof UIFeaturedStacked>;
 
 export const Default: Story = {
   args: {

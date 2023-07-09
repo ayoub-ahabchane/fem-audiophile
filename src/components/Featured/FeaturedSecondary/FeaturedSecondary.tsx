@@ -1,4 +1,6 @@
+import { getProduct } from "@/lib/swell/products";
 import Cta, { PropTypes as TCta } from "../../Cta/Cta";
+import { getCategory } from "@/lib/swell/categories";
 
 type PropTypes = {
   backgroundImage: string;
@@ -6,7 +8,7 @@ type PropTypes = {
   cta: TCta;
 };
 
-const FeaturedSecondary = ({
+export const UIFeaturedSecondary = ({
   cta: { anchorProps, label, variation = "secondary" },
   headline,
   backgroundImage,
@@ -26,6 +28,32 @@ const FeaturedSecondary = ({
       </div>
     </article>
   );
+};
+
+const FeaturedSecondary = async ({ productSlug }: { productSlug: string }) => {
+  const productData = await getProduct(productSlug, [
+    "name",
+    "slug",
+    "category_index",
+    "content.media_assets",
+  ]);
+  const categoryId = productData.category_index.id[0];
+  const { slug: categorySlug } = await getCategory(categoryId, ["slug"]);
+
+  const featureProps: PropTypes = {
+    headline: productData.name,
+    cta: {
+      variation: "secondary",
+      label: "see product",
+      anchorProps: {
+        "aria-label": `Check out our ${productData.name}`,
+        href: `/${categorySlug}/${productData.slug}`,
+      },
+    },
+    backgroundImage: productData.content.media_assets[0].feature_image[0].secondary.file.url,
+  };
+
+  return <UIFeaturedSecondary {...featureProps} />
 };
 
 export default FeaturedSecondary;

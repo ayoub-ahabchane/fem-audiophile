@@ -15,10 +15,14 @@ interface PropTypes {
 export const MobileMenu = ({ categories }: PropTypes) => {
   return (
     <Menu>
-      <Menu.Button arial-label="Navigation menu">
-        <Bars3Icon className="w-6" />
-      </Menu.Button>
-      <Transition.Child
+      <div>
+        <Menu.Button arial-label="Navigation menu" as={Fragment}>
+          <button>
+            <Bars3Icon className="w-6" />
+          </button>
+        </Menu.Button>
+      </div>
+      <Transition
         enter="transition"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -27,20 +31,22 @@ export const MobileMenu = ({ categories }: PropTypes) => {
         leaveTo="opacity-0"
         as={Fragment}
       >
-        <div className="fixed inset-0 top-[5.996875rem] overflow-scroll bg-black/30">
+        <div className="fixed inset-0 top-[5.934375rem]  z-50 overflow-scroll bg-black/30">
           <Menu.Items
             className={
-              "absolute grid w-full grid-rows-3 gap-x-4 gap-y-4 bg-adp-copy-white px-6 py-8 md:auto-rows-fr md:grid-cols-3 md:grid-rows-none"
+              "absolute z-50 grid w-full grid-rows-3 gap-x-4 gap-y-4 bg-adp-copy-white px-6 py-8 md:auto-rows-fr md:grid-cols-3 md:grid-rows-none"
             }
           >
             {categories.map((category) => (
-              <Menu.Item key={category.categoryName}>
-                {({ close }) => <CategoryCard {...category} onClick={close} />}
+              <Menu.Item key={category.categoryName} as={Fragment}>
+                {({ close, active }) => (
+                  <CategoryCard {...category} onClick={close} active={active} />
+                )}
               </Menu.Item>
             ))}
           </Menu.Items>
         </div>
-      </Transition.Child>
+      </Transition>
     </Menu>
   );
 };

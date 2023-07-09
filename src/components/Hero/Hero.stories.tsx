@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Hero from "./Hero";
+import UIHero from "./UIHero";
 
-const meta: Meta<typeof Hero> = {
+const meta: Meta<typeof UIHero> = {
   title: "Components/Hero",
-  component: Hero,
+  component: UIHero,
   parameters: {
     layout: "fullscreen",
   },
@@ -11,7 +11,7 @@ const meta: Meta<typeof Hero> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Hero>;
+type Story = StoryObj<typeof UIHero>;
 
 const heroMobile =
   "http://localhost:6006/product_images/x99_mark_ii/mobile/x99_mark_ii_hero.jpg";
@@ -36,7 +36,7 @@ export const Default: Story = {
       label: "see product",
       anchorProps: {
         href: "/",
-        ariaLabel: "Explore our new xx99 mark ii headphones",
+        "aria-label": "Explore our new xx99 mark ii headphones",
       },
     },
   },

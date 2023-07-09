@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Logo from "../Logo/Logo";
 import { TLink } from "../NavLink/NavLinkLarge/NavLinkLarge";
 import NavListLarge from "../NavList/NavListLarge";
@@ -10,7 +9,7 @@ type PropTypes = {
   navLinks: TLink[];
 };
 
-const Footer = ({ navLinks }: PropTypes) => {
+export const UIFooter = ({ navLinks }: PropTypes) => {
   return (
     <footer className="bg-adp-slate-800 text-adp-copy-white">
       <div className="relative mx-auto px-6 py-14 after:absolute after:left-1/2 after:top-0 after:h-[0.25rem] after:w-[6.25rem] after:-translate-x-[50%] after:bg-adp-tangerine-400 md:px-10 md:py-16 md:after:left-10 md:after:translate-x-0 lg:max-w-[79.375rem] lg:px-20 lg:after:left-20">
@@ -30,25 +29,46 @@ const Footer = ({ navLinks }: PropTypes) => {
           </p>
           <ul className="flex flex-row items-center justify-center gap-4 md:col-start-2 md:row-start-2 md:justify-self-end lg:row-span-2 lg:row-start-1">
             <li>
-              <Link href={"/"} aria-label="Audiophile's Facebook page">
+              <a
+                href={"https://www.facebook.com"}
+                aria-label="Audiophile's Facebook page"
+              >
                 <IconFacebook />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={"/"} aria-label="Audiophile's Twitter page">
+              <a
+                href={"https://www.twitter.com"}
+                aria-label="Audiophile's Twitter page"
+              >
                 <IconTwitter />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={"/"} aria-label="Audiophile's Instagram page">
+              <a
+                href={"https://www.instagram.com"}
+                aria-label="Audiophile's Instagram page"
+              >
                 <IconInstagram />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </footer>
   );
+};
+
+const Footer = () => {
+  const footerProps: PropTypes = {
+    navLinks: [
+      { label: "Home", href: "/" },
+      { label: "headphones", href: "/headphones" },
+      { label: "speakers", href: "/speakers" },
+      { label: "earphones", href: "/earphones" },
+    ],
+  };
+  return <UIFooter {...footerProps} />;
 };
 
 export default Footer;

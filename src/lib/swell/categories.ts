@@ -28,3 +28,10 @@ export const getAllCategories = async (fields?: string[]) => {
 
   return results;
 };
+
+export const getCategory = async (id: string, fields?: string[]) => {
+  const results = await swellnode.get(`/categories/${id}`, {
+    fields,
+  });
+  return results;
+};

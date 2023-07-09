@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import speakersImg from "../../../storybook/assets/product_images/zx9_speakers/feature/primary/image-speaker-zx9.png";
-import FeaturedMain from "./FeaturedMain";
+import UIFeaturedMain from "./UIFeaturedMain";
 
-const meta: Meta<typeof FeaturedMain> = {
+const meta: Meta<typeof UIFeaturedMain> = {
   title: "Components/Featured Products/Main",
-  component: FeaturedMain,
+  component: UIFeaturedMain,
   decorators: [
     (Story) => (
       <div className="max-w-[1110px] lg:mx-auto">
@@ -16,7 +16,7 @@ const meta: Meta<typeof FeaturedMain> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FeaturedMain>;
+type Story = StoryObj<typeof UIFeaturedMain>;
 
 export const Default: Story = {
   args: {
@@ -29,7 +29,7 @@ export const Default: Story = {
       label: "see product",
       anchorProps: {
         href: "/",
-        ariaLabel: "Check out the new zx9 speakers",
+        "aria-label": "Check out the new zx9 speakers",
       },
     },
   },

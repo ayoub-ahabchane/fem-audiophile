@@ -3,11 +3,11 @@ import earphonesImg from "../../storybook/assets/category_thumbnails/image-categ
 import headphonesImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-headphones.png";
 import speakersImg from "../../storybook/assets/category_thumbnails/image-category-thumbnail-speakers.png";
 import { PropTypes as TCategoryCard } from "../CategoryCard/CategoryCard";
-import CategoryCards from "./CategoryCards";
+import { UICategoryCards } from "./CategoryCards";
 
-const meta: Meta<typeof CategoryCards> = {
+const meta: Meta<typeof UICategoryCards> = {
   title: "Components/Product Category/List",
-  component: CategoryCards,
+  component: UICategoryCards,
   parameters: {
     // layout: "centered",
   },
@@ -15,7 +15,7 @@ const meta: Meta<typeof CategoryCards> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CategoryCards>;
+type Story = StoryObj<typeof UICategoryCards>;
 
 const categoriesData: TCategoryCard[] = [
   {

@@ -1,3 +1,5 @@
+import { getCategory } from "@/lib/swell/categories";
+import { getProduct } from "@/lib/swell/products";
 import Image, { StaticImageData } from "next/image";
 import Cta, { PropTypes as TCta } from "../../../components/Cta/Cta";
 
@@ -16,7 +18,7 @@ type PropTypes = {
   cta: TCta;
 };
 
-const FeaturedStacked = ({
+export const UIFeaturedStacked = ({
   backgroundImages,
   headline,
   cta: { label, anchorProps },
@@ -53,6 +55,49 @@ const FeaturedStacked = ({
       </div>
     </article>
   );
+};
+
+const FeaturedStacked = async ({ productSlug }: { productSlug: string }) => {
+  const productData = await getProduct(productSlug, [
+    "name",
+    "slug",
+    "category_index",
+    "content.media_assets",
+  ]);
+  const categoryId = productData.category_index.id[0];
+  const { slug: categorySlug } = await getCategory(categoryId, ["slug"]);
+
+  const featureProps: PropTypes = {
+    headline: productData.name,
+    cta: {
+      variation: "secondary",
+      label: "see product",
+      anchorProps: {
+        "aria-label": `Check out our ${productData.name}`,
+        href: `/${categorySlug}/${productData.slug}`,
+      },
+    },
+    backgroundImages: {
+      mobile: {
+        src: productData.content.media_assets[0].feature_image[0].stacked[0]
+          .mobile.file.url,
+        alt: productData.name,
+      },
+
+      tablet: {
+        src: productData.content.media_assets[0].feature_image[0].stacked[0]
+          .tablet.file.url,
+        alt: productData.name,
+      },
+      desktop: {
+        src: productData.content.media_assets[0].feature_image[0].stacked[0]
+          .desktop.file.url,
+        alt: productData.name,
+      },
+    },
+  };
+
+  return <UIFeaturedStacked {...featureProps} />;
 };
 
 export default FeaturedStacked;

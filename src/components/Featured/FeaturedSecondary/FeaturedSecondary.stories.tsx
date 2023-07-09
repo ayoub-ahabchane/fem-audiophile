@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import FeaturedSecondary from "./FeaturedSecondary";
+import UIFeaturedSecondary from "./FeaturedSecondary";
 
-const meta: Meta<typeof FeaturedSecondary> = {
+const meta: Meta<typeof UIFeaturedSecondary> = {
   title: "Components/Featured Products/Secondary",
-  component: FeaturedSecondary,
+  component: UIFeaturedSecondary,
   decorators: [
     (Story) => (
       <div className="max-w-[1110px] lg:mx-auto">
@@ -15,7 +15,7 @@ const meta: Meta<typeof FeaturedSecondary> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FeaturedSecondary>;
+type Story = StoryObj<typeof UIFeaturedSecondary>;
 
 export const Default: Story = {
   args: {

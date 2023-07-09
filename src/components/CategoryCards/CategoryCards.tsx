@@ -1,18 +1,14 @@
+import { getAllCategories } from "@/lib/swell/categories";
 import {
   CategoryCard,
   PropTypes as TCategoryCard,
 } from "../CategoryCard/CategoryCard";
 
-enum ListDirection {
-  "column" = "flex-column",
-  "row" = "flex-row",
-}
-
 type PropTypes = {
   categories: TCategoryCard[];
 };
 
-const CategoryCards = ({ categories }: PropTypes) => {
+export const UICategoryCards = ({ categories }: PropTypes) => {
   return (
     <ul
       className={`grid grid-rows-3 gap-x-4 gap-y-4 md:auto-rows-fr md:grid-cols-3 md:grid-rows-none`}
@@ -24,6 +20,23 @@ const CategoryCards = ({ categories }: PropTypes) => {
       ))}
     </ul>
   );
+};
+
+const CategoryCards = async () => {
+  const categoriesData = await getAllCategories(["name", "slug", "images"]);
+  const categories: TCategoryCard[] = categoriesData.map(
+    ({ name, slug, images }): TCategoryCard => ({
+      categoryName: name,
+      link: {
+        href: `/${slug}`,
+        ariaLabel: `Discover Audiophile ${name}`,
+      },
+      image: images[0].file.url,
+      ctaTitle: "Shop",
+    })
+  );
+
+  return <UICategoryCards categories={categories} />;
 };
 
 export default CategoryCards;
