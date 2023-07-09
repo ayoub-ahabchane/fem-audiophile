@@ -34,7 +34,7 @@ export const Default: Story = {
     cta: {
       label: "see product",
       anchorProps: {
-        ariaLabel: "Check out our X99 mark 2 headphones",
+        "aria-label": "Check out our X99 mark 2 headphones",
         href: "/",
       },
     },

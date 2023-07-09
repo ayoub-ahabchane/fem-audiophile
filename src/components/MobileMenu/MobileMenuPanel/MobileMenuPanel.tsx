@@ -26,6 +26,7 @@ const categories = [
 const MobileMenuPanel = () => {
   return (
     <div>
+      {/* @ts-expect-error Server Component */}
       <UICategoryCards categories={categories} />
     </div>
   );

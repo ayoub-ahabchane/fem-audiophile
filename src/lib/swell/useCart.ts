@@ -7,7 +7,8 @@ export const useCart = () => {
   const [cart, setCart] = useState<swell.Cart>();
 
   const getCart = async () => {
-    const cartData = await swelljs.cart.get();
+    const cartDataRaw = await swelljs.cart.get();
+    const cartData = cartDataRaw ?? undefined;
     setCart(cartData);
   };
 

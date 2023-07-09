@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import earPhonesDesktop from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_desktop.jpg";
 import earPhonesMobile from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_mobile.jpg";
 import earPhonesTablet from "../../../storybook/assets/product_images/yx1_earphones/featured/image-earphones-yx1_tablet.jpg";
-import UIFeaturedStacked from "./FeaturedStacked";
+import { UIFeaturedStacked } from "./FeaturedStacked";
 
 const meta: Meta<typeof UIFeaturedStacked> = {
   title: "Components/Featured Products/Stacked",
@@ -25,7 +25,7 @@ export const Default: Story = {
     headline: "yx1 earphones",
     cta: {
       label: "see product",
-      anchorProps: { href: "/", ariaLabel: "Check out our YX1 earphones" },
+      anchorProps: { href: "/", "aria-label": "Check out our YX1 earphones" },
     },
     backgroundImages: {
       mobile: { src: earPhonesMobile, alt: "YX1 earphones" },

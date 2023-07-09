@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import UIFeaturedSecondary from "./FeaturedSecondary";
+import { UIFeaturedSecondary } from "./FeaturedSecondary";
 
 const meta: Meta<typeof UIFeaturedSecondary> = {
   title: "Components/Featured Products/Secondary",
@@ -27,7 +27,7 @@ export const Default: Story = {
       label: "see product",
       anchorProps: {
         href: "/",
-        ariaLabel: "Check out the ZX7 speaker",
+        "aria-label": "Check out the ZX7 speaker",
       },
     },
   },
