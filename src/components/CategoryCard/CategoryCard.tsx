@@ -6,6 +6,7 @@ import { TLink } from "../NavLink/NavLinkLarge/NavLinkLarge";
 export type PropTypes = {
   categoryName: string;
   image: StaticImageData | string;
+  blurUrl: string;
   ctaTitle: string;
   link: TLink;
   onClick?: () => void;
@@ -19,6 +20,7 @@ export const CategoryCard = ({
   link: { href, ariaLabel },
   onClick,
   active,
+  blurUrl,
   ...rest
 }: PropTypes) => {
   return (
@@ -36,6 +38,8 @@ export const CategoryCard = ({
         src={image}
         width={200}
         height={200}
+        placeholder="blur"
+        blurDataURL={blurUrl}
         alt="Audophile Headphones"
         className={`col-span-1 col-start-1 row-span-2 row-start-1 w-36 translate-y-1 justify-self-center transition
         group-focus-within:translate-y-3

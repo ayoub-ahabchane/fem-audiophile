@@ -23,18 +23,21 @@ const categoriesData: TCategoryCard[] = [
     ctaTitle: "shop",
     image: headphonesImg,
     link: { href: "/" },
+    blurUrl: "",
   },
   {
     categoryName: "speakers",
     ctaTitle: "shop",
     image: speakersImg,
     link: { href: "/" },
+    blurUrl: "",
   },
   {
     categoryName: "earphones",
     ctaTitle: "shop",
     image: earphonesImg,
     link: { href: "/" },
+    blurUrl: "",
   },
 ];
 

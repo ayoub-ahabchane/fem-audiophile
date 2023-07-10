@@ -3,6 +3,7 @@ import {
   CategoryCard,
   PropTypes as TCategoryCard,
 } from "../CategoryCard/CategoryCard";
+import { getBlurURL } from "@/lib/utils";
 
 type PropTypes = {
   categories: TCategoryCard[];
@@ -24,15 +25,23 @@ export const UICategoryCards = ({ categories }: PropTypes) => {
 
 const CategoryCards = async () => {
   const categoriesData = await getAllCategories(["name", "slug", "images"]);
-  const categories: TCategoryCard[] = categoriesData.map(
-    ({ name, slug, images }): TCategoryCard => ({
-      categoryName: name,
-      link: {
-        href: `/${slug}`,
-        ariaLabel: `Discover Audiophile ${name}`,
-      },
-      image: images[0].file.url,
-      ctaTitle: "Shop",
+
+  const categories = await Promise.all(
+    categoriesData.map(async ({ name, slug, images }) => {
+      const blurUrl = await getBlurURL(images[0].file.url);
+
+      const props: TCategoryCard = {
+        categoryName: name,
+        link: {
+          href: `/${slug}`,
+          ariaLabel: `Discover Audiophile ${name}`,
+        },
+        image: images[0].file.url,
+        ctaTitle: "Shop",
+        blurUrl,
+      };
+
+      return props;
     })
   );
 

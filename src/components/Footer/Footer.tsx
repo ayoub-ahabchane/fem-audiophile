@@ -63,9 +63,9 @@ const Footer = () => {
   const footerProps: PropTypes = {
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "headphones", href: "/headphones" },
       { label: "speakers", href: "/speakers" },
       { label: "earphones", href: "/earphones" },
+      { label: "headphones", href: "/headphones" },
     ],
   };
   return <UIFooter {...footerProps} />;

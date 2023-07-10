@@ -18,6 +18,11 @@ export interface PropTypes {
       tablet: string | StaticImageData;
       desktop: string | StaticImageData;
     };
+    blurImg: {
+      mobile: string;
+      tablet: string;
+      desktop: string;
+    };
     alt: string;
   };
 }
@@ -43,17 +48,23 @@ const PreviewCard = ({
           alt={productImages.alt}
           className="w-full rounded-lg object-cover object-center md:hidden"
           fill
+          placeholder={"blur"}
+          blurDataURL={productImages.blurImg.mobile}
         />
         <Image
           src={productImages.src.tablet}
           alt={productImages.alt}
           className="hidden object-cover md:block lg:hidden"
+          placeholder={"blur"}
+          blurDataURL={productImages.blurImg.tablet}
           fill
         />
         <Image
           src={productImages.src.desktop}
           alt={productImages.alt}
           className="hidden object-cover lg:block"
+          placeholder={"blur"}
+          blurDataURL={productImages.blurImg.desktop}
           fill
         />
       </div>

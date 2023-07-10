@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import NavBarMain from "@/components/NavBarMain/NavBarMain";
 import { StoreProvider } from "@/lib/Providers/store-provider";
 import { getAllCategories } from "@/lib/swell/categories";
+import { getBlurURL } from "@/lib/utils";
 import { Manrope } from "next/font/google";
 import { TLink } from "../components/NavLink/NavLinkLarge/NavLinkLarge";
 import "./globals.css";
@@ -14,7 +15,10 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Audiophile",
+  title: {
+    template: `%s | Audiophile`,
+    default: "Audiophile",
+  },
   description: "A frontend mentor challenge solution",
 };
 
@@ -24,23 +28,30 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const categoriesData = await getAllCategories(["name", "slug", "images"]);
-  const categories: TCategoryCard[] = categoriesData.map(
-    ({ name, slug, images }): TCategoryCard => ({
-      categoryName: name,
-      link: {
-        href: `/${slug}`,
-        ariaLabel: `Discover Audiophile ${name}`,
-      },
-      image: images[0].file.url,
-      ctaTitle: "Shop",
+  const categories = await Promise.all(
+    categoriesData.map(async ({ name, slug, images }) => {
+      const blurUrl = await getBlurURL(images[0].file.url);
+
+      const props: TCategoryCard = {
+        categoryName: name,
+        link: {
+          href: `/${slug}`,
+          ariaLabel: `Discover Audiophile ${name}`,
+        },
+        image: images[0].file.url,
+        ctaTitle: "Shop",
+        blurUrl,
+      };
+
+      return props;
     })
   );
 
   const links: TLink[] = [
     { label: "Home", href: "/" },
-    { label: "headphones", href: "/headphones" },
     { label: "speakers", href: "/speakers" },
     { label: "earphones", href: "/earphones" },
+    { label: "headphones", href: "/headphones" },
   ];
 
   return (

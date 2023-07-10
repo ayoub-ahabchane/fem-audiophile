@@ -24,18 +24,21 @@ export const Default: Story = {
         ctaTitle: "shop",
         image: headphonesImg,
         link: { href: "/headphones" },
+        blurUrl: ""
       },
       {
         categoryName: "speakers",
         ctaTitle: "shop",
         image: speakersImg,
         link: { href: "/speakers" },
+        blurUrl: ""
       },
       {
         categoryName: "earphones",
         ctaTitle: "shop",
         image: earphonesImg,
         link: { href: "/earphones" },
+        blurUrl: ""
       },
     ],
     links: [

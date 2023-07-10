@@ -2,11 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 import promoImgDesktop from "../../storybook/assets/promo/image-best-gear_desktop.jpg";
 import promoImgMobile from "../../storybook/assets/promo/image-best-gear_mobile.jpg";
 import promoImgTablet from "../../storybook/assets/promo/image-best-gear_tablet.jpg";
-import Promo from "./Promo";
+import { UIPromo } from "./Promo";
 
-const meta: Meta<typeof Promo> = {
+const meta: Meta<typeof UIPromo> = {
   title: "Components/Promo",
-  component: Promo,
+  component: UIPromo,
   decorators: [
     (Story) => (
       <div className="max-w-[1110px] lg:mx-auto">
@@ -18,7 +18,7 @@ const meta: Meta<typeof Promo> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Promo>;
+type Story = StoryObj<typeof UIPromo>;
 
 export const Default: Story = {
   args: {

@@ -45,6 +45,11 @@ export const Default: Story = {
         desktop: HeadphonesImgDesktop,
       },
       alt: "X99 Mark 2 Headphones",
+      blurImg: {
+        mobile: "",
+        tablet: "",
+        desktop: "",
+      },
     },
   },
 };

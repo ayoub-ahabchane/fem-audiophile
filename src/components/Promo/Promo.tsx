@@ -1,3 +1,4 @@
+import { getBlurURL } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import promoImgDesktop from "../../../public/promo/image-best-gear_desktop.jpg";
@@ -12,24 +13,35 @@ type PropTypes = {
     tablet: TImage;
     desktop: TImage;
   };
+  blurImage: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
 };
 
-export const UIPromo = ({ headline, copy, image }: PropTypes) => {
+export const UIPromo = ({ headline, copy, image, blurImage }: PropTypes) => {
   return (
     <article className="grid grid-cols-1 grid-rows-[repeat(2,_auto)] gap-y-10 md:gap-y-16 lg:grid-cols-2 lg:grid-rows-1 lg:gap-x-32">
       <Image
         src={image.mobile.src}
         alt={image.mobile.alt}
         className="place-self-center rounded-md object-cover md:hidden"
+        placeholder="blur"
+        blurDataURL={blurImage.mobile}
       />
       <Image
         src={image.tablet.src}
         alt={image.tablet.alt}
         className="hidden rounded-md object-cover md:block lg:hidden"
+        placeholder="blur"
+        blurDataURL={blurImage.tablet}
       />
       <Image
         src={image.desktop.src}
         alt={image.desktop.alt}
+        blurDataURL={blurImage.desktop}
+        placeholder="blur"
         className="hidden rounded-md object-cover lg:col-start-2 lg:block"
       />
 
@@ -43,7 +55,7 @@ export const UIPromo = ({ headline, copy, image }: PropTypes) => {
   );
 };
 
-const Promo = () => {
+const Promo = async () => {
   const promoFeatures: PropTypes = {
     headline: (
       <>
@@ -66,6 +78,18 @@ const Promo = () => {
         src: promoImgDesktop,
         alt: "Man wearing XX99 Mark 2 headphones",
       },
+    },
+
+    blurImage: {
+      mobile: await getBlurURL(
+        "https://raw.githubusercontent.com/ayoub-ahabchane/fem-audiophile/901491c185dde2277fcca76fc3969c28445b86ee/public/promo/image-best-gear_mobile.jpg"
+      ),
+      tablet: await getBlurURL(
+        "https://raw.githubusercontent.com/ayoub-ahabchane/fem-audiophile/901491c185dde2277fcca76fc3969c28445b86ee/public/promo/image-best-gear_tablet.jpg"
+      ),
+      desktop: await getBlurURL(
+        "https://raw.githubusercontent.com/ayoub-ahabchane/fem-audiophile/901491c185dde2277fcca76fc3969c28445b86ee/public/promo/image-best-gear_desktop.jpg"
+      ),
     },
   };
 
