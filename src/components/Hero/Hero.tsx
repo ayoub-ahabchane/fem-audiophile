@@ -1,4 +1,4 @@
-import { getCategory } from "@/lib/swell/categories";
+import { getCategoryById } from "@/lib/swell/categories";
 import { getProduct } from "@/lib/swell/products";
 import UIHero, { PropTypes } from "./UIHero";
 
@@ -11,7 +11,9 @@ const Hero = async ({ productSlug }: { productSlug: string }) => {
     "is_new",
   ]);
   const categoryId = heroData.category_index.id[0];
-  const { slug: heroProductCategory } = await getCategory(categoryId, ["slug"]);
+  const { slug: heroProductCategory } = await getCategoryById(categoryId, [
+    "slug",
+  ]);
 
   const heroProps: PropTypes = {
     headline: heroData.name,

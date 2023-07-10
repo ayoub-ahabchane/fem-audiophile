@@ -8,7 +8,7 @@ import Promo from "@/components/Promo/Promo";
 export default async function Home() {
   // RENDER
   return (
-    <main className="pt-[5.934375rem]">
+    <main className="belowBar">
       {/* @ts-expect-error Server Component */}
       <Hero productSlug="xx99-mark-ii-headphones" />
       <div className="wrapper flex flex-col gap-24 px-6 py-24">

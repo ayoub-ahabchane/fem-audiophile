@@ -1,4 +1,4 @@
-import { getCategory } from "@/lib/swell/categories";
+import { getCategoryById } from "@/lib/swell/categories";
 import { getProduct } from "@/lib/swell/products";
 import Image, { StaticImageData } from "next/image";
 import Cta, { PropTypes as TCta } from "../../../components/Cta/Cta";
@@ -30,18 +30,21 @@ export const UIFeaturedStacked = ({
           src={backgroundImages.mobile.src}
           alt={backgroundImages.mobile.alt}
           fill
+          sizes="327px"
           className="rounded-md object-cover md:hidden"
         />
         <Image
           src={backgroundImages.tablet.src}
           alt={backgroundImages.tablet.alt}
           fill
+          sizes="339px"
           className="hidden rounded-md object-cover md:block"
         />
         <Image
           src={backgroundImages.desktop.src}
           alt={backgroundImages.desktop.alt}
           fill
+          sizes="320px"
           className="hidden rounded-md object-cover lg:block"
         />
       </div>
@@ -65,7 +68,7 @@ const FeaturedStacked = async ({ productSlug }: { productSlug: string }) => {
     "content.media_assets",
   ]);
   const categoryId = productData.category_index.id[0];
-  const { slug: categorySlug } = await getCategory(categoryId, ["slug"]);
+  const { slug: categorySlug } = await getCategoryById(categoryId, ["slug"]);
 
   const featureProps: PropTypes = {
     headline: productData.name,

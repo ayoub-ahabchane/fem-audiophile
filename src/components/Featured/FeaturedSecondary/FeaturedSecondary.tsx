@@ -1,6 +1,6 @@
+import { getCategoryById, getCategoryBySlug } from "@/lib/swell/categories";
 import { getProduct } from "@/lib/swell/products";
 import Cta, { PropTypes as TCta } from "../../Cta/Cta";
-import { getCategory } from "@/lib/swell/categories";
 
 type PropTypes = {
   backgroundImage: string;
@@ -38,7 +38,7 @@ const FeaturedSecondary = async ({ productSlug }: { productSlug: string }) => {
     "content.media_assets",
   ]);
   const categoryId = productData.category_index.id[0];
-  const { slug: categorySlug } = await getCategory(categoryId, ["slug"]);
+  const { slug: categorySlug } = await getCategoryById(categoryId, ["slug"]);
 
   const featureProps: PropTypes = {
     headline: productData.name,
@@ -50,10 +50,11 @@ const FeaturedSecondary = async ({ productSlug }: { productSlug: string }) => {
         href: `/${categorySlug}/${productData.slug}`,
       },
     },
-    backgroundImage: productData.content.media_assets[0].feature_image[0].secondary.file.url,
+    backgroundImage:
+      productData.content.media_assets[0].feature_image[0].secondary.file.url,
   };
 
-  return <UIFeaturedSecondary {...featureProps} />
+  return <UIFeaturedSecondary {...featureProps} />;
 };
 
 export default FeaturedSecondary;

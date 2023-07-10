@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import Cta, { PropTypes as TCta } from "../Cta/Cta";
 
-interface PropTypes {
+export interface PropTypes {
   /**Specifies the display order of the product image and text on large breakpoints */
   reversed: boolean;
   /** Product name */
@@ -9,7 +9,7 @@ interface PropTypes {
   /** Product description */
   copy: string;
   /** Product flags */
-  overline: string;
+  overline: string | null;
   /** Call to action button */
   cta: TCta;
   productImages: {
@@ -23,7 +23,7 @@ interface PropTypes {
 }
 
 const PreviewCard = ({
-  reversed,
+  reversed = false,
   title,
   copy,
   overline,
@@ -36,22 +36,25 @@ const PreviewCard = ({
   return (
     <article className="grid grid-flow-row grid-rows-[repeat(2,_auto)] items-center gap-y-8 md:gap-y-14 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-1 lg:gap-x-32">
       <div
-        className={`relative flex overflow-hidden rounded-lg lg:w-[33.75rem] lg:self-stretch ${imageOrderClasses}`}
+        className={`relative flex h-[22rem] overflow-hidden rounded-lg md:w-full lg:h-[35rem] lg:self-stretch ${imageOrderClasses}`}
       >
         <Image
           src={productImages.src.mobile}
           alt={productImages.alt}
-          className="w-full object-cover md:hidden"
+          className="w-full rounded-lg object-cover object-center md:hidden"
+          fill
         />
         <Image
           src={productImages.src.tablet}
           alt={productImages.alt}
-          className="hidden md:block lg:hidden"
+          className="hidden object-cover md:block lg:hidden"
+          fill
         />
         <Image
           src={productImages.src.desktop}
           alt={productImages.alt}
-          className="hidden lg:block"
+          className="hidden object-cover lg:block"
+          fill
         />
       </div>
       <div

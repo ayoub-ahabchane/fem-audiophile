@@ -1,4 +1,4 @@
-import { getCategory } from "@/lib/swell/categories";
+import { getCategoryById } from "@/lib/swell/categories";
 import { getProduct } from "@/lib/swell/products";
 import UIFeaturedMain, { PropTypes } from "./UIFeaturedMain";
 
@@ -10,7 +10,7 @@ const FeaturedMain = async ({ productSlug }: { productSlug: string }) => {
     "content.media_assets",
   ]);
   const categoryId = productData.category_index.id[0];
-  const { slug: categorySlug } = await getCategory(categoryId, ["slug"]);
+  const { slug: categorySlug } = await getCategoryById(categoryId, ["slug"]);
   const featureProps: PropTypes = {
     headline: productData.name,
     productImg:

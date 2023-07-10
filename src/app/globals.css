@@ -127,6 +127,10 @@ h2 > span {
     @apply px-6 md:px-10 lg:mx-auto lg:max-w-[79.375rem] lg:px-20;
   }
 
+  .belowBar {
+    @apply pt-[5.934375rem];
+  }
+
   .lockScroll {
     @apply overflow-hidden;
   }

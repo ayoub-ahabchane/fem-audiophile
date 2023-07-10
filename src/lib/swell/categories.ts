@@ -20,7 +20,7 @@ export const getAllCategories = async (fields?: string[]) => {
 
   if (numOfPages > 1) {
     for (let p = 1; p <= numOfPages; p++) {
-      const nextPage = await getCategoriesPage(p);
+      const nextPage = await getCategoriesPage(p, fields);
       const nextPageResults = nextPage.results;
       results.push(...nextPageResults);
     }
@@ -29,7 +29,18 @@ export const getAllCategories = async (fields?: string[]) => {
   return results;
 };
 
-export const getCategory = async (id: string, fields?: string[]) => {
+export const getCategoryBySlug = async (slug: string, fields?: string[]) => {
+  const results = await swellnode.get(`/categories/`, {
+    where: {
+      slug: { $eq: slug },
+    },
+
+    fields,
+  });
+  return results.results[0];
+};
+
+export const getCategoryById = async (id: string, fields?: string[]) => {
   const results = await swellnode.get(`/categories/${id}`, {
     fields,
   });
