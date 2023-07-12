@@ -31,6 +31,11 @@ export const Default: Story = {
         tablet: suggestionImgTablet,
         desktop: suggestionImgDesktop,
       },
+      blutUrl: {
+        mobile: "string",
+        tablet: "string",
+        desktop: "string",
+      },
       alt: "XX99 Mark 1 headphones",
     },
     cta: {

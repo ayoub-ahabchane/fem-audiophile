@@ -1,7 +1,11 @@
 import ProductProfile, {
   PropTypes as TProductProfile,
 } from "@/components/ProductPage/ProductProfile/ProductProfile";
+import SuggestionCard, {
+  PropTypes as TSuggestionCard,
+} from "@/components/SuggestionCard/SuggestionCard";
 import { getCategoryBySlug } from "@/lib/swell/categories";
+import { swellnode } from "@/lib/swell/init/node";
 import { getAllProductsByCategory, getProduct } from "@/lib/swell/products";
 import { getBlurURL } from "@/lib/utils";
 import Link from "next/link";
@@ -122,6 +126,55 @@ const Page = async ({
     },
   };
 
+  const suggestionProps: TSuggestionCard[] = await Promise.all(
+    product.up_sells.map(async ({ product_id }: { product_id: string }) => {
+      const productData = await swellnode.get(`/products/${product_id}`, {
+        fields: ["name", "slug", "attributes", "content.media_assets"],
+      });
+
+      const suggestionCardProps: TSuggestionCard = {
+        title: productData.name,
+        cta: {
+          label: "see product",
+          anchorProps: {
+            "aria-label": `Check out our ${productData.name}`,
+            href: `/${productData.attributes.product_category}/${productData.slug}`,
+          },
+        },
+        productImages: {
+          alt: productData.name,
+          src: {
+            mobile:
+              productData.content.media_assets[0].suggestion_image[0].mobile
+                .file.url,
+            tablet:
+              productData.content.media_assets[0].suggestion_image[0].tablet
+                .file.url,
+            desktop:
+              productData.content.media_assets[0].suggestion_image[0].desktop
+                .file.url,
+          },
+          blutUrl: {
+            mobile: await getBlurURL(
+              productData.content.media_assets[0].suggestion_image[0].mobile
+                .file.url
+            ),
+            tablet: await getBlurURL(
+              productData.content.media_assets[0].suggestion_image[0].tablet
+                .file.url
+            ),
+            desktop: await getBlurURL(
+              productData.content.media_assets[0].suggestion_image[0].desktop
+                .file.url
+            ),
+          },
+        },
+      };
+
+      return suggestionCardProps;
+    })
+  );
+
   return (
     <div className="wrapper flex flex-col gap-[7.5rem] pb-[7.5rem] pt-8 md:pb-[7.5rem] md:pt-10 lg:gap-40 lg:pb-40 lg:pt-20">
       <div>
@@ -132,6 +185,11 @@ const Page = async ({
           Go back
         </Link>
         <ProductProfile {...productProfileProps} />
+      </div>
+      <div className="grid auto-cols-fr grid-flow-row auto-rows-fr gap-y-14 md:grid-flow-col md:gap-x-2.5 lg:gap-x-[1.875rem]">
+        {suggestionProps.map((suggestion) => (
+          <SuggestionCard key={suggestion.title} {...suggestion} />
+        ))}
       </div>
     </div>
   );

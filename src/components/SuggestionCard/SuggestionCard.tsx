@@ -1,8 +1,7 @@
-import { PropTypes as TCta } from "../Cta/Cta";
 import Image, { StaticImageData } from "next/image";
-import Cta from "../Cta/Cta";
+import Cta, { PropTypes as TCta } from "../Cta/Cta";
 
-interface PropTypes {
+export interface PropTypes {
   /**Product name */
   title: string;
   /** Call to action button */
@@ -13,6 +12,11 @@ interface PropTypes {
       mobile: string | StaticImageData;
       tablet: string | StaticImageData;
       desktop: string | StaticImageData;
+    };
+    blutUrl: {
+      mobile: string;
+      tablet: string;
+      desktop: string;
     };
     alt: string;
   };
@@ -25,21 +29,27 @@ const SuggestionCard = ({
 }: PropTypes) => {
   return (
     <article className="flex flex-col items-center gap-8 md:gap-10">
-      <h3 className="order-2 text-h5 uppercase">{title}</h3>
-      <div className="order-1 overflow-hidden rounded-lg">
+      <h3 className="order-2 text-center text-h5 uppercase">{title}</h3>
+      <div className="relative order-1 h-full min-h-[120px] w-full overflow-hidden rounded-lg">
         <Image
           src={src.mobile}
           alt={alt}
+          width={654}
+          height={240}
           className="w-full rounded-lg object-cover md:hidden"
         />
         <Image
           src={src.tablet}
           alt={alt}
+          width={446}
+          height={636}
           className="hidden w-full rounded-lg object-cover md:block lg:hidden"
         />
         <Image
           src={src.desktop}
           alt={alt}
+          width={700}
+          height={636}
           className="hidden w-full rounded-lg object-cover lg:block"
         />
       </div>
