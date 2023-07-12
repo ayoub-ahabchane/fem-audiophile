@@ -129,7 +129,13 @@ const Page = async ({
   const suggestionProps: TSuggestionCard[] = await Promise.all(
     product.up_sells.map(async ({ product_id }: { product_id: string }) => {
       const productData = await swellnode.get(`/products/${product_id}`, {
-        fields: ["name", "slug", "attributes", "content.media_assets"],
+        fields: [
+          "name",
+          "slug",
+          "attributes",
+          "content.media_assets",
+          "backup",
+        ],
       });
 
       const suggestionCardProps: TSuggestionCard = {
@@ -145,32 +151,25 @@ const Page = async ({
           alt: productData.name,
           src: {
             mobile:
-              productData.content.media_assets[0].suggestion_image[0].mobile
-                .file.url,
+              productData.backup.suggestion_image_mobile.file.url,
             tablet:
-              productData.content.media_assets[0].suggestion_image[0].tablet
-                .file.url,
+              productData.backup.suggestion_image_tablet.file.url,
             desktop:
-              productData.content.media_assets[0].suggestion_image[0].desktop
-                .file.url,
+              productData.backup.suggestion_image_desktop.file.url,
           },
-          blutUrl: {
+          blurUrl: {
             mobile: await getBlurURL(
-              productData.content.media_assets[0].suggestion_image[0].mobile
-                .file.url
+              productData.backup.suggestion_image_mobile.file.url
             ),
             tablet: await getBlurURL(
-              productData.content.media_assets[0].suggestion_image[0].tablet
-                .file.url
+              productData.backup.suggestion_image_tablet.file.url
             ),
             desktop: await getBlurURL(
-              productData.content.media_assets[0].suggestion_image[0].desktop
-                .file.url
+              productData.backup.suggestion_image_desktop.file.url
             ),
           },
         },
       };
-
       return suggestionCardProps;
     })
   );

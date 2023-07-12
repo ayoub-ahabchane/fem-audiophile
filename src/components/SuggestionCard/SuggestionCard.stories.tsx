@@ -31,7 +31,7 @@ export const Default: Story = {
         tablet: suggestionImgTablet,
         desktop: suggestionImgDesktop,
       },
-      blutUrl: {
+      blurUrl: {
         mobile: "string",
         tablet: "string",
         desktop: "string",

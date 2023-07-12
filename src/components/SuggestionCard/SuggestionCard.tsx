@@ -13,7 +13,7 @@ export interface PropTypes {
       tablet: string | StaticImageData;
       desktop: string | StaticImageData;
     };
-    blutUrl: {
+    blurUrl: {
       mobile: string;
       tablet: string;
       desktop: string;
@@ -25,7 +25,7 @@ export interface PropTypes {
 const SuggestionCard = ({
   title,
   cta,
-  productImages: { src, alt },
+  productImages: { src, alt, blurUrl },
 }: PropTypes) => {
   return (
     <article className="flex flex-col items-center gap-8 md:gap-10">
@@ -35,6 +35,8 @@ const SuggestionCard = ({
           src={src.mobile}
           alt={alt}
           width={654}
+          placeholder="blur"
+          blurDataURL={blurUrl.desktop}
           height={240}
           className="w-full rounded-lg object-cover md:hidden"
         />
@@ -43,6 +45,8 @@ const SuggestionCard = ({
           alt={alt}
           width={446}
           height={636}
+          placeholder="blur"
+          blurDataURL={blurUrl.tablet}
           className="hidden w-full rounded-lg object-cover md:block lg:hidden"
         />
         <Image
@@ -50,6 +54,8 @@ const SuggestionCard = ({
           alt={alt}
           width={700}
           height={636}
+          placeholder="blur"
+          blurDataURL={blurUrl.desktop}
           className="hidden w-full rounded-lg object-cover lg:block"
         />
       </div>
