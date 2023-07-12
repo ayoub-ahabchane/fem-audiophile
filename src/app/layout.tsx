@@ -6,6 +6,7 @@ import { getBlurURL } from "@/lib/utils";
 import { Manrope } from "next/font/google";
 import { TLink } from "../components/NavLink/NavLinkLarge/NavLinkLarge";
 import "./globals.css";
+import Notice from "@/components/Notice/Notice";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable}`}>
       <body className="font-sans">
+        <Notice />
         <NavBarMain categories={categories} links={links} />
         {children}
         <Footer />
