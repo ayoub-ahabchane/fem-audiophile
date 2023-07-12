@@ -150,12 +150,9 @@ const Page = async ({
         productImages: {
           alt: productData.name,
           src: {
-            mobile:
-              productData.backup.suggestion_image_mobile.file.url,
-            tablet:
-              productData.backup.suggestion_image_tablet.file.url,
-            desktop:
-              productData.backup.suggestion_image_desktop.file.url,
+            mobile: productData.backup.suggestion_image_mobile.file.url,
+            tablet: productData.backup.suggestion_image_tablet.file.url,
+            desktop: productData.backup.suggestion_image_desktop.file.url,
           },
           blurUrl: {
             mobile: await getBlurURL(
@@ -176,7 +173,7 @@ const Page = async ({
 
   return (
     <div className="wrapper flex flex-col gap-[7.5rem] pb-[7.5rem] pt-8 md:pb-[7.5rem] md:pt-10 lg:gap-40 lg:pb-40 lg:pt-20">
-      <div>
+      <section>
         <Link
           href={`/${category}`}
           className="inline-block pb-6 text-adp-copy-black/50 transition focus-within:text-adp-tangerine-400 hover:text-adp-tangerine-400"
@@ -184,12 +181,17 @@ const Page = async ({
           Go back
         </Link>
         <ProductProfile {...productProfileProps} />
-      </div>
-      <div className="grid auto-cols-fr grid-flow-row auto-rows-fr gap-y-14 md:grid-flow-col md:gap-x-2.5 lg:gap-x-[1.875rem]">
-        {suggestionProps.map((suggestion) => (
-          <SuggestionCard key={suggestion.title} {...suggestion} />
-        ))}
-      </div>
+      </section>
+      <section>
+        <h2 className="mb-10 text-center text-h5 uppercase md:mb-14 md:text-h3 lg:mb-16">
+          You may also like
+        </h2>
+        <div className="grid auto-cols-fr grid-flow-row auto-rows-fr gap-y-14 md:grid-flow-col md:gap-x-2.5 lg:gap-x-[1.875rem]">
+          {suggestionProps.map((suggestion) => (
+            <SuggestionCard key={suggestion.title} {...suggestion} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
