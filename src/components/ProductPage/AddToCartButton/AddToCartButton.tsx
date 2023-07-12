@@ -1,16 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { storeContext } from "@/lib/Providers/store-provider";
+import { useCart } from "@/lib/swell/useCart";
+// import { swelljs } from "@/lib/swell/init/client";
+// import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 
 interface PropTypes {
+  productId: string;
   max: number;
   disabled: boolean;
-  onAddToCart: () => void;
 }
 
-const AddToCartButton = ({ max, disabled }: PropTypes) => {
+const AddToCartButton = ({ max, disabled, productId }: PropTypes) => {
   const [quantity, setQuantity] = useState(1);
-
+  const [isLoading, setIsLoading] = useState(disabled);
+  const { addItemToCart, setIsCartLoading } = useContext(storeContext);
+  const { getCart } = useCart();
   const increase = () => {
     setQuantity((prevQty) => prevQty + 1);
   };
@@ -18,8 +24,16 @@ const AddToCartButton = ({ max, disabled }: PropTypes) => {
     setQuantity((prevQty) => prevQty - 1);
   };
 
+  const addToCart = async () => {
+    setIsLoading(true);
+    setIsCartLoading(true);
+    await addItemToCart!(productId, quantity);
+    setIsLoading(false);
+    setIsCartLoading(false);
+  };
+
   return (
-    <div className="gap order-5 flex gap-4">
+    <div className="order-5 flex gap-x-4">
       <div className="grid grid-cols-[repeat(3,_3rem)] grid-rows-[3rem] place-items-center bg-adp-slate-300 font-bold">
         <button
           onClick={decrease}
@@ -43,13 +57,18 @@ const AddToCartButton = ({ max, disabled }: PropTypes) => {
         </button>
       </div>
       <button
-        className="btn-primary"
-        disabled={disabled}
-        onClick={() => {
-          console.log("boop!");
-        }}
+        className="btn-primary inline-block w-40"
+        disabled={disabled || isLoading}
+        onClick={addToCart}
       >
-        Add to cart
+        {disabled || isLoading ? (
+          <div
+            className="inline-block aspect-square w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          />
+        ) : (
+          "Add to cart"
+        )}
       </button>
     </div>
   );

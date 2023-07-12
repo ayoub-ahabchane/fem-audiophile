@@ -1,18 +1,16 @@
+"use client";
+
+import { storeContext } from "@/lib/Providers/store-provider";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import { Fragment, useState } from "react";
-import { PropTypes as TCartItem } from "./CartItem/CartItem";
+import { Fragment, useContext, useState } from "react";
+import { TCart } from "./Cart";
 import CartPanel from "./CartPanel/CartPanel";
 
-export interface PropTypes {
-  items: TCartItem[] | [];
-  cartTotal: number;
-  checkoutUrl: string | null;
-}
-
-const UICart = ({ items, cartTotal, checkoutUrl }: PropTypes) => {
+const UICart = ({ cartItems, grandTotal, checkoutUrl }: TCart) => {
   const noAsync = true;
+  const { isCartLoading } = useContext(storeContext);
   let [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -32,11 +30,16 @@ const UICart = ({ items, cartTotal, checkoutUrl }: PropTypes) => {
   return (
     <div>
       <button
+        className="group"
+        disabled={isCartLoading}
         onClick={() => {
           setIsOpen((prevState) => !prevState);
         }}
       >
-        <ShoppingCartIcon className="w-6 transition focus-within:text-adp-tangerine-400 hover:text-adp-tangerine-400" />
+        <ShoppingCartIcon
+          className="w-6 transition  group-disabled:text-adp-copy-white/30
+        group-[&:not(:disabled)]:focus-within:text-adp-tangerine-300 group-[&:not(:disabled)]:hover:text-adp-tangerine-300"
+        />
       </button>
       <Transition show={isOpen} as={Fragment}>
         <Dialog onClose={closeModal} className={"z-10"}>
@@ -71,8 +74,8 @@ const UICart = ({ items, cartTotal, checkoutUrl }: PropTypes) => {
                   }
                 >
                   <CartPanel
-                    items={items}
-                    cartTotal={cartTotal}
+                    items={cartItems}
+                    cartTotal={grandTotal}
                     onCheckout={onCheckout}
                     closePanel={closeModal}
                     onClearItems={clearAll}

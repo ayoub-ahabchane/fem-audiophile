@@ -2,11 +2,11 @@
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export interface PropTypes {
-  /**Action to be performed when the user increases or decreases the cart item's quantity */
-  onChangeQuantity: () => void;
+  productId: string;
+  cartItemId: string;
   /**The cart item's quantity */
   orderedQuantity: number;
   /**The maximum quantity that a user can add to cart */
@@ -26,7 +26,6 @@ export interface PropTypes {
 }
 
 const CartItem = ({
-  onChangeQuantity,
   orderedQuantity = 1,
   maxQuantity,
   price,
@@ -41,16 +40,6 @@ const CartItem = ({
   const decreaseQty = () => setQuantity((prevQty) => prevQty - 1);
   const increaseQty = () => setQuantity((prevQty) => prevQty + 1);
 
-  useEffect(() => {
-    onChangeQuantity;
-  }, [quantity, onChangeQuantity]);
-
-  const MyLink = () => (
-    <Link href={`/${category}/${slug}`} className="font-bold">
-      {shortname}
-    </Link>
-  );
-
   return (
     <div className="flex items-center gap-4">
       <Image
@@ -63,7 +52,7 @@ const CartItem = ({
       <div className="grow">
         <Link
           href={`/${category}/${slug}`}
-          className="font-bold"
+          className="font-bold uppercase transition focus-within:text-adp-tangerine-400 hover:text-adp-tangerine-400"
           aria-label={`${name} ${category}`}
         >
           {shortname}

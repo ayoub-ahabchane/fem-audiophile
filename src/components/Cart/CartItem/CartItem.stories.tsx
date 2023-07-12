@@ -31,9 +31,6 @@ export const Default: Story = {
     thumbnail: thumbnail,
     orderedQuantity: 3,
     maxQuantity: 5,
-    onChangeQuantity: () => {
-      console.log("boop");
-    },
     price: 2999,
     shortname: "XX99 MK II",
     slug: "xx99-mkii",

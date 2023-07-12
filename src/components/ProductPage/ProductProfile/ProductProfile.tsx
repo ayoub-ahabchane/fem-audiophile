@@ -8,13 +8,20 @@ type ImageProps = {
   alt: string;
 };
 
-interface PropTypes {
+type UrlByBreakpoint = {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+};
+
+export interface PropTypes {
+  id: string;
   /** Product name */
   title: React.ReactNode | string;
   /** Product description */
   copy: string;
   /** Product flags */
-  overline: string;
+  overline: string | null;
   /** Product price */
   price: number;
   /** Contains the product image set and a gallery set*/
@@ -26,32 +33,32 @@ interface PropTypes {
         tablet: string | StaticImageData;
         desktop: string | StaticImageData;
       };
+      blurUrl: UrlByBreakpoint;
       alt: string;
     };
     /** Images to be displayed in the gallery section of the product page */
     galleryImages: Array<{
       alt: string;
-
       src: {
         mobile: string | StaticImageData;
         tablet: string | StaticImageData;
         desktop: string | StaticImageData;
       };
+      blurUrl: UrlByBreakpoint;
     }>;
   };
   /**An array of paragraphs describing the features of the product */
-  literature: Array<string>;
+  literature: string;
   boxContents: Array<{
     quantity: number;
     name: string;
   }>;
   /**Maximum quanitity that a user can add to cart*/
   maxQuantity: number;
-  /**Action to be triggered when the user clicks the add to cart button*/
-  onAddToCart: () => void;
 }
 
 const ProductProfile = ({
+  id,
   title,
   copy,
   overline,
@@ -60,27 +67,37 @@ const ProductProfile = ({
   literature,
   boxContents,
   maxQuantity,
-  onAddToCart,
 }: PropTypes) => {
   return (
-    <section className="flex flex-col gap-[5.5rem] md:gap-40">
-      <article className="grid grid-flow-row grid-rows-[repeat(2,_auto)] items-center gap-y-8 md:grid-flow-col md:grid-cols-[3fr_4fr] md:grid-rows-1 md:gap-x-[4.31rem] lg:grid-cols-[repeat(2,_auto)] lg:gap-x-32">
-        <div className="relative flex overflow-hidden rounded-lg lg:w-[33.75rem] lg:self-stretch">
+    <section className="flex flex-col gap-[5.5rem] md:gap-[7.5rem]">
+      <article className="grid grid-flow-row grid-rows-[repeat(2,_auto)] items-center gap-y-8 md:grid-flow-col md:grid-cols-[3fr_4fr] md:grid-rows-1 md:gap-x-[4.31rem] lg:grid-cols-[6fr_5fr] lg:gap-x-32">
+        <div className="relative flex overflow-hidden rounded-lg lg:max-w-[33.75rem] lg:self-stretch">
           <Image
             src={productImages.src.mobile}
             alt={productImages.alt}
+            height={327}
+            width={327}
+            placeholder="blur"
+            blurDataURL={productImages.blurUrl.mobile}
             className="w-full object-cover md:hidden"
           />
           <Image
             src={productImages.src.tablet}
             alt={productImages.alt}
-            className="hidden md:block lg:hidden"
+            height={480}
+            width={281}
+            placeholder="blur"
+            blurDataURL={productImages.blurUrl.tablet}
+            className="hidden w-full object-cover md:block lg:hidden"
           />
           <Image
             src={productImages.src.desktop}
             alt={productImages.alt}
-            className="hidden lg:block"
+            placeholder="blur"
+            blurDataURL={productImages.blurUrl.desktop}
+            className="hidden w-full object-cover lg:block"
             width={540}
+            height={560}
           />
         </div>
         <div className="flex flex-col items-start gap-6 lg:items-start lg:gap-8 lg:px-0">
@@ -100,11 +117,7 @@ const ProductProfile = ({
               minimumFractionDigits: 0,
             })}
           </p>
-          <AddToCartButton
-            onAddToCart={onAddToCart}
-            max={maxQuantity}
-            disabled={false}
-          />
+          <AddToCartButton productId={id} max={maxQuantity} disabled={false} />
         </div>
       </article>
       <ProductLiterature literature={literature} boxContents={boxContents} />

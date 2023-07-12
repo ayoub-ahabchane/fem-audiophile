@@ -4,6 +4,7 @@ import FeaturedSecondary from "@/components/Featured/FeaturedSecondary/FeaturedS
 import FeaturedStacked from "@/components/Featured/FeaturedStacked/FeaturedStacked";
 import Hero from "@/components/Hero/Hero";
 import Promo from "@/components/Promo/Promo";
+import { getAllCategories, getCategoryBySlug } from "@/lib/swell/categories";
 
 // export const metadata = {
 //   title: `Home`,
@@ -11,6 +12,7 @@ import Promo from "@/components/Promo/Promo";
 
 export default async function Home() {
   // RENDER
+
   return (
     <main className="belowBar">
       {/* @ts-expect-error Server Component */}

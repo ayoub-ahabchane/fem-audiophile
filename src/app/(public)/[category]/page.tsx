@@ -7,12 +7,6 @@ import { getAllProductsByCategory } from "@/lib/swell/products";
 import { getBlurURL } from "@/lib/utils";
 import { Metadata } from "next";
 
-export const dynamicParams = false;
-export const generateStaticParams = async () => {
-  const categories = await getAllCategories(["name", "slug"]);
-  return categories.map(({ slug }) => ({ category: slug }));
-};
-
 export const generateMetadata = async ({
   params: { category },
 }: {
