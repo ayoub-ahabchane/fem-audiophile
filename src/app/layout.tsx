@@ -1,7 +1,6 @@
 import { PropTypes as TCategoryCard } from "@/components/CategoryCard/CategoryCard";
 import Footer from "@/components/Footer/Footer";
 import NavBarMain from "@/components/NavBarMain/NavBarMain";
-import { StoreProvider } from "@/lib/Providers/store-provider";
 import { getAllCategories } from "@/lib/swell/categories";
 import { getBlurURL } from "@/lib/utils";
 import { Manrope } from "next/font/google";
@@ -57,11 +56,9 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable}`}>
       <body className="font-sans">
-        <StoreProvider>
-          <NavBarMain categories={categories} links={links} />
-          {children}
-          <Footer />
-        </StoreProvider>
+        <NavBarMain categories={categories} links={links} />
+        {children}
+        <Footer />
       </body>
     </html>
   );

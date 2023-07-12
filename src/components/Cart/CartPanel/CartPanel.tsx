@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCart } from "@/lib/swell/useCart";
 import CartItem, { PropTypes as TCartItem } from "../CartItem/CartItem";
-import { swelljs } from "@/lib/swell/init/client";
-import { TCart } from "../Cart";
+import { useState } from "react";
 
 interface PropTypes {
   items: TCartItem[] | [];
@@ -20,8 +19,14 @@ const CartPanel = ({
   closePanel,
   onClearItems,
 }: PropTypes) => {
+  const { isValidating } = useCart();
+
   return (
-    <div className="flex flex-col gap-8 rounded-lg bg-white px-7 py-8">
+    <div
+      className={`flex flex-col gap-8 rounded-lg bg-white px-7 py-8 transition ${
+        isValidating && "pointer-events-none"
+      }`}
+    >
       <div className="flex items-baseline justify-between">
         <h4 className="text-h6 font-bold uppercase">
           Cart {items.length > 0 ? `(${items.length})` : null}
@@ -46,7 +51,7 @@ const CartPanel = ({
           })}
         </ul>
       ) : (
-        <p>Cart is empty!</p>
+        <p className="text-center font-bold">Your cart is empty!</p>
       )}
       <div className="flex items-baseline justify-between">
         <h4 className="uppercase opacity-50">Total</h4>
@@ -59,14 +64,21 @@ const CartPanel = ({
         </p>
       </div>
       <button
-        disabled={!items.length}
+        disabled={!items.length || isValidating}
         className="btn-primary"
         onClick={() => {
           onCheckout();
           closePanel();
         }}
       >
-        checkout
+        {isValidating ? (
+          <div
+            className="inline-block aspect-square w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          />
+        ) : (
+          "checkout"
+        )}
       </button>
     </div>
   );

@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
 import thumbnail from "../../storybook/assets/cart/image-xx99-mark-two-headphones.jpg";
-import UICart from "./UICart";
+import Cart from "./Cart";
 
-const meta: Meta<typeof UICart> = {
+const meta: Meta<typeof Cart> = {
   title: "Components/Cart/Cart",
-  component: UICart,
+  component: Cart,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof UICart>;
+type Story = StoryObj<typeof Cart>;
 
 export const Default: Story = {
   args: {

@@ -1,22 +1,20 @@
 "use client";
 
-import { storeContext } from "@/lib/Providers/store-provider";
 import { useCart } from "@/lib/swell/useCart";
-// import { swelljs } from "@/lib/swell/init/client";
-// import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
-
+import { useState } from "react";
+import { useSWRConfig } from "swr";
 interface PropTypes {
   productId: string;
   max: number;
   disabled: boolean;
 }
 
-const AddToCartButton = ({ max, disabled, productId }: PropTypes) => {
+const AddToCartButton = ({ max, productId }: PropTypes) => {
+  const { mutate } = useSWRConfig();
   const [quantity, setQuantity] = useState(1);
-  const [isLoading, setIsLoading] = useState(disabled);
-  const { addItemToCart, setIsCartLoading } = useContext(storeContext);
-  const { getCart } = useCart();
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const { addItemToCart } = useCart();
   const increase = () => {
     setQuantity((prevQty) => prevQty + 1);
   };
@@ -25,11 +23,10 @@ const AddToCartButton = ({ max, disabled, productId }: PropTypes) => {
   };
 
   const addToCart = async () => {
-    setIsLoading(true);
-    setIsCartLoading(true);
+    setIsButtonLoading(true);
     await addItemToCart!(productId, quantity);
-    setIsLoading(false);
-    setIsCartLoading(false);
+    mutate("cart");
+    setIsButtonLoading(false);
   };
 
   return (
@@ -58,10 +55,10 @@ const AddToCartButton = ({ max, disabled, productId }: PropTypes) => {
       </div>
       <button
         className="btn-primary inline-block w-40"
-        disabled={disabled || isLoading}
+        disabled={isButtonLoading || isButtonDisabled}
         onClick={addToCart}
       >
-        {disabled || isLoading ? (
+        {isButtonLoading ? (
           <div
             className="inline-block aspect-square w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
             role="status"

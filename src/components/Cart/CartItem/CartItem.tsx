@@ -1,9 +1,10 @@
 "use client";
 
+import { useCart } from "@/lib/swell/useCart";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
+import { Dispatch, SetStateAction, useState } from "react";
+import { useSWRConfig } from "swr";
 export interface PropTypes {
   productId: string;
   cartItemId: string;
@@ -26,7 +27,7 @@ export interface PropTypes {
 }
 
 const CartItem = ({
-  orderedQuantity = 1,
+  orderedQuantity,
   maxQuantity,
   price,
   shortname,
@@ -34,14 +35,39 @@ const CartItem = ({
   category,
   thumbnail,
   name,
+  cartItemId,
 }: PropTypes) => {
-  const [quantity, setQuantity] = useState(orderedQuantity);
-
-  const decreaseQty = () => setQuantity((prevQty) => prevQty - 1);
-  const increaseQty = () => setQuantity((prevQty) => prevQty + 1);
+  const { mutate } = useSWRConfig();
+  const {
+    updateCartItemQuantity,
+    isValidating,
+    isLoading,
+    removeItemFromCart,
+  } = useCart();
+  const [isItemLoading, setIsItemLoading] = useState(false);
+  const decreaseQty = async () => {
+    setIsItemLoading(true);
+    if (orderedQuantity > 1) {
+      await updateCartItemQuantity(cartItemId, orderedQuantity - 1);
+    } else {
+      await removeItemFromCart(cartItemId);
+    }
+    await mutate("cart");
+    setIsItemLoading(false);
+  };
+  const increaseQty = async () => {
+    setIsItemLoading(true);
+    await updateCartItemQuantity(cartItemId, orderedQuantity + 1);
+    await mutate("cart");
+    setIsItemLoading(false);
+  };
 
   return (
-    <div className="flex items-center gap-4">
+    <div
+      className={`flex items-center gap-4 transition ${
+        isItemLoading && "pointer-events-none opacity-50"
+      }`}
+    >
       <Image
         src={thumbnail}
         alt="XX99 Mark 2 headphones"
@@ -69,7 +95,7 @@ const CartItem = ({
         <button
           onClick={decreaseQty}
           className="col-start-1 inline-block px-4 py-4 opacity-25 transition  [&:not(:disabled)]:focus-within:text-adp-tangerine-400 [&:not(:disabled)]:focus-within:opacity-100 [&:not(:disabled)]:hover:text-adp-tangerine-400 [&:not(:disabled)]:hover:opacity-100 "
-          disabled={quantity === 0}
+          disabled={orderedQuantity === 0}
           aria-label={`Decrease the order quantity of ${name} by one`}
         >
           -
@@ -78,12 +104,12 @@ const CartItem = ({
           className="col-start-2 inline-block p-[0.44rem]"
           aria-label="Quanitity to add to cart"
         >
-          {quantity}
+          {orderedQuantity}
         </span>
         <button
           onClick={increaseQty}
           className="col-start-3 inline-block px-4 py-4 opacity-25 transition [&:not(:disabled)]:focus-within:text-adp-tangerine-400 [&:not(:disabled)]:focus-within:opacity-100 [&:not(:disabled)]:hover:text-adp-tangerine-400 [&:not(:disabled)]:hover:opacity-100"
-          disabled={quantity === maxQuantity}
+          disabled={orderedQuantity === maxQuantity}
           aria-label={`Increase the order quantity of ${name}`}
         >
           +
