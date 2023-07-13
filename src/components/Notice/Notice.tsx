@@ -49,8 +49,9 @@ export default function Notice() {
                   </Dialog.Title>
                   <p className="text-adp-copy-black/50">
                     Please refrain from entering real personal or payment
-                    details during checkout. Transactions are not processed or
-                    stored securely. Thank you for your cooperation!
+                    details during checkout. This is only a demo project and any
+                    transactions you make will be canceled. Thank you for your
+                    cooperation!
                   </p>
 
                   <button
