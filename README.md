@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Audiophile - Online Audio Gear Store
 
-## Getting Started
+![Audiophile Logo](audiophile-logo.png)
 
-First, run the development server:
+Welcome to Audiophile, an online audio gear store! This repository contains a demo project that I built to showcase my skills in web development. It's a part of my portfolio, and I'm excited to share it with you.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- Swell
+- Tailwind CSS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About the Project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Audiophile is an online store where you can find a wide range of audio gear, including headphones, speakers, and accessories. It provides a user-friendly interface for browsing and purchasing high-quality audio products.
 
-## Learn More
+The project was developed using Next.js, a React framework that enables server-side rendering and efficient client-side routing. Swell, a headless e-commerce platform, was used to handle the backend functionality, such as managing the product catalog, cart, and checkout process.
 
-To learn more about Next.js, take a look at the following resources:
+For the design, I utilized the design provided by Frontendmentor.com, a platform that offers design challenges to help developers enhance their skills. I focused on implementing the design faithfully while adding my own touches to improve the user experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Browse and search for audio gear
+- View detailed product information and specifications
+- Add products to the cart
+- Adjust quantity and remove items from the cart
+- Proceed to checkout and complete the purchase
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for checking out Audiophile! I hope you find this demo project informative and enjoyable. If you have any questions, please don't hesitate to reach out.
