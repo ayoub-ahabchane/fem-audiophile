@@ -20,7 +20,7 @@ For the design, I utilized the design provided by Frontendmentor.com, a platform
 
 ## Features
 
-- Browse and search for audio gear
+- Browse audio gear
 - View detailed product information and specifications
 - Add products to the cart
 - Adjust quantity and remove items from the cart
